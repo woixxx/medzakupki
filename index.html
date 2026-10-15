@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Медзакупки Москвы 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Unbounded:wght@600;700&display=swap">
+<style>
+/* Макет: тёмная аналитическая консоль. Шапка с логотипом, липкая строка вкладок, сетка из 12 колонок с панелями графиков и таблиц; карточка-досье выезжает справа (на телефоне — снизу). */
+:root{
+  color-scheme:dark;
+  --bg:#08101e; --panel:#0e192b; --panel-2:#13213a; --raise:#182a49; --head:#0a1424; --line:#1c2b46; --line-2:#2a3d60;
+  --ink:#e9eef7; --ink-2:#b5c0d5; --muted:#7f8ca7;
+  --accent:#2fc48d; --accent-ink:#03160e; --accent-soft:rgba(47,196,141,.13); --accent-line:rgba(47,196,141,.4); --accent-text:#7fe3b9;
+  --risk:#f4a93c; --risk-soft:rgba(244,169,60,.13); --risk-line:rgba(244,169,60,.45); --risk-text:#ffc77a;
+  --info-soft:rgba(99,166,255,.13); --info-line:rgba(99,166,255,.42); --info-text:#9cc6ff;
+  --bar-neutral:#34486e; --track:#15233c;
+  --c1:#3987e5; --c2:#d95926; --c3:#199e70; --c4:#c98500; --c5:#d55181; --c6:#008300;
+  --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body.locked{overflow:hidden}
+a{color:var(--accent-text);text-underline-offset:2px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1280px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+
+/* Шапка */
+.top{background:linear-gradient(180deg,#0d1a31,var(--bg));border-bottom:1px solid var(--line)}
+.bar1{display:flex;align-items:center;gap:14px;padding-block:18px}
+.logo{width:48px;height:48px;border-radius:13px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;flex:none;box-shadow:0 8px 28px rgba(47,196,141,.25)}
+.logo svg{width:28px;height:28px}
+.ttl{min-width:0}
+.ttl h1{font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.15;letter-spacing:-.01em}
+.ttl h1 span{color:var(--accent)}
+.ttl p{font-size:13px;color:var(--muted);margin-top:4px}
+.live{margin-left:auto;display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-2);border:1px solid var(--line-2);background:var(--panel);border-radius:10px;padding:8px 13px;white-space:nowrap}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(47,196,141,.18)}
+
+/* Вкладки */
+.tabsbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(8,16,30,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabsbar .wrap{display:flex;align-items:center;gap:10px;min-height:56px}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1;position:relative}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{border:1px solid transparent;background:none;color:var(--ink-2);padding:8px 14px;border-radius:10px;cursor:pointer;white-space:nowrap;font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:8px}
+.tab-btn .bdg{font-family:var(--f-mono);font-size:11px;padding:1px 6px;border-radius:6px;background:var(--panel-2);color:var(--muted)}
+.tab-btn[aria-selected="true"]{background:var(--accent-soft);border-color:var(--accent-line);color:var(--ink)}
+.tab-btn[aria-selected="true"] .bdg{background:var(--accent);color:var(--accent-ink)}
+@media (hover:hover){.tab-btn:hover{color:var(--ink);background:var(--panel)}}
+.mnav{display:none;flex:1;align-items:center;gap:8px;min-width:0}
+.mnav-step{font-size:22px;line-height:1;width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:12px;border:1px solid var(--line-2);background:var(--panel);cursor:pointer;padding:0}
+.mnav-step:disabled{opacity:.35;cursor:default}
+.mnav-cur{flex:1;min-width:0;display:flex;align-items:center;gap:10px;height:42px;padding:0 14px;border-radius:12px;border:1px solid var(--accent-line);background:var(--accent-soft);cursor:pointer;text-align:left}
+.mnav-no{font-family:var(--f-mono);font-size:12px;color:var(--accent-text);white-space:nowrap}
+.mnav-name{font-weight:600;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.mnav-caret{margin-left:auto;color:var(--muted);transition:transform .2s;flex:none}
+.mnav-cur[aria-expanded="true"] .mnav-caret{transform:rotate(180deg)}
+body.menu-open .tabsbar{z-index:45}
+.secmenu{position:absolute;left:0;right:0;top:100%;background:var(--panel);border-bottom:1px solid var(--line-2);box-shadow:0 20px 40px rgba(0,0,0,.45);max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px);overflow-y:auto;overscroll-behavior:contain;animation:drop .2s ease}
+.secmenu ol{list-style:none;margin:0;padding-block:8px 14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.secmenu button{text-align:left;width:100%;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;padding:12px 10px;border:0;border-bottom:1px solid var(--line);background:none;cursor:pointer}
+.secmenu li:last-child button{border-bottom:0}
+.secmenu .sn{font-family:var(--f-mono);font-size:12px;color:var(--accent-text)}
+.secmenu .stt{font-weight:600;font-size:16px}
+.secmenu .sgo{color:var(--muted)}
+.secmenu .sd{grid-column:2 / -1;font-size:13px;color:var(--muted)}
+.secmenu button[aria-current="true"]{background:var(--accent-soft);border-radius:10px;border-bottom-color:transparent}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* Сетка и панели */
+main{padding-block:20px 48px}
+.tab{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;align-items:start;scroll-margin-top:72px}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:1 / -1}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.ph{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap}
+.ph h3{font-size:16px;font-weight:600;line-height:1.3;display:flex;align-items:center;gap:9px}
+.ph h3 svg{width:18px;height:18px;color:var(--accent);flex:none}
+.ph .sub{font-size:13px;color:var(--muted);margin-top:3px}
+.pa{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.lnk{font-size:13px;font-weight:500;color:var(--accent-text);background:none;border:0;cursor:pointer;padding:4px 0;white-space:nowrap}
+.src{font-size:12px;color:var(--muted)}
+.src a{color:inherit}
+.lead{grid-column:1 / -1;font-size:15px;color:var(--ink-2)}
+.lead b{color:var(--ink);font-weight:600}
+.tab.in-l{animation:inL .26s ease}
+.tab.in-r{animation:inR .26s ease}
+@keyframes inL{from{transform:translateX(28px);opacity:0}to{transform:none;opacity:1}}
+@keyframes inR{from{transform:translateX(-28px);opacity:0}to{transform:none;opacity:1}}
+
+/* KPI */
+.kpis{grid-column:1 / -1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.kpi{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px;cursor:pointer;display:grid;gap:5px;align-content:start;min-width:0;transition:border-color .15s,transform .1s,background .15s}
+@media (hover:hover){.kpi:hover{border-color:var(--accent-line);background:var(--panel-2)}}
+.kpi .kl{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.kpi .kv{font-family:var(--f-display);font-weight:700;font-size:21px;line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi .ks{font-size:12.5px;color:var(--ink-2)}
+.kpi.risk .kv{color:var(--risk)}
+
+/* Чипы и плашки */
+.chip{border:1px solid var(--line-2);background:var(--panel-2);color:var(--ink-2);border-radius:9px;padding:6px 12px;font-size:13px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.chip .c{font-family:var(--f-mono);font-size:11px;opacity:.8}
+.chip[aria-pressed="true"]{color:var(--ink);background:var(--raise);border-color:var(--ink-2)}
+.chip.g{color:var(--accent-text)}
+.chip.g[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent-line)}
+.chip.r{color:var(--risk-text)}
+.chip.r[aria-pressed="true"]{background:var(--risk-soft);border-color:var(--risk-line)}
+.pill{font-family:var(--f-body);display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:8px;padding:3px 9px;white-space:nowrap;border:1px solid}
+.pill.ok{color:var(--accent-text);background:var(--accent-soft);border-color:var(--accent-line)}
+.pill.info{color:var(--info-text);background:var(--info-soft);border-color:var(--info-line)}
+.pill.mut{color:var(--ink-2);background:var(--panel-2);border-color:var(--line-2)}
+.pill.risk{color:var(--risk-text);background:var(--risk-soft);border-color:var(--risk-line)}
+.flags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.flag{font-size:11px;font-weight:600;color:var(--risk-text);background:var(--risk-soft);border:1px solid var(--risk-line);border-radius:6px;padding:0 6px;white-space:nowrap}
+.kind{font-size:11px;color:var(--muted);font-family:var(--f-mono);font-weight:500}
+.catdot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px;flex:none}
+.btn{font-size:13.5px;font-weight:500;cursor:pointer;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2);padding:8px 14px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+@media (hover:hover){.btn:hover{border-color:var(--ink-2)}}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+
+/* Таблицы */
+.tbox{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 12px;background:var(--head);border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:bottom}
+th .sb{background:none;border:0;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;padding:0;display:inline-flex;gap:5px;align-items:center}
+th .sb .ar{color:var(--accent-text);font-size:12px}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tr.clk{cursor:pointer}
+@media (hover:hover){tr.clk:hover td,tr.clk:hover th{background:var(--panel-2)}}
+th.r,td.r{text-align:right}
+td.amt{text-align:right;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+td.amt .kind{display:block}
+td.date{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);white-space:nowrap}
+td.date small{display:block;font-family:var(--f-body);font-size:11px}
+.tname b{display:block;font-weight:600;line-height:1.3}
+.tname small{color:var(--muted);font-size:12px}
+.subj{line-height:1.4}
+.subj small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.cellbar{display:grid;grid-template-columns:minmax(50px,1fr) auto;gap:10px;align-items:center}
+.cellbar .num{font-weight:600;white-space:nowrap}
+.ellip{display:block;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mx small{color:var(--muted);font-size:12px}
+.rk{font-family:var(--f-mono);color:var(--muted);width:36px}
+tr.xrow td{background:var(--head);color:var(--ink-2);font-size:14px}
+tr.xrow td p+p{margin-top:6px}
+.caret{display:inline-block;width:14px;color:var(--accent-text)}
+
+/* Горизонтальные столбцы */
+.hbars{display:grid;gap:11px}
+.hb{display:grid;gap:5px;text-align:left;background:none;border:0;padding:4px 6px;margin:-4px -6px;border-radius:8px;width:calc(100% + 12px)}
+button.hb{cursor:pointer}
+@media (hover:hover){button.hb:hover{background:var(--panel-2)}}
+.hb-top{display:flex;justify-content:space-between;gap:12px;font-size:14px}
+.hb-top .lab{color:var(--ink-2);min-width:0;display:flex;align-items:center;overflow-wrap:anywhere}
+.hb-top .val{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.track{display:block;height:10px;background:var(--track);border-radius:3px;position:relative;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--accent);border-radius:0 4px 4px 0;min-width:2px}
+.fill.neutral{background:var(--bar-neutral)}
+.fill.risk{background:var(--risk)}
+.hb .hint{font-size:12px;color:var(--muted)}
+
+/* Кольцо */
+.donut{display:grid;grid-template-columns:184px minmax(0,1fr);gap:20px;align-items:center}
+.dfig{position:relative;width:184px;height:184px}
+.dfig svg{width:100%;height:100%;display:block}
+.dseg{cursor:pointer;transition:stroke-width .15s}
+.dseg:hover,.dseg:focus-visible{stroke-width:32;outline:none}
+.dc{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none;padding:30px}
+.dc b{font-family:var(--f-display);font-size:15px;line-height:1.2;font-variant-numeric:tabular-nums}
+.dc span{font-size:12px;color:var(--muted);margin-top:3px}
+.legend{display:grid;gap:4px}
+.lg{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;font-size:14px;background:none;border:0;padding:6px 8px;margin:0 -8px;text-align:left;cursor:pointer;border-radius:8px}
+@media (hover:hover){.lg:hover{background:var(--panel-2)}}
+.lg i{width:10px;height:10px;border-radius:3px}
+.lg .lv{font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap;font-size:13px}
+.toggle{display:inline-flex;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.toggle button{font-size:12.5px;border:0;background:transparent;color:var(--ink-2);padding:5px 11px;border-radius:7px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--raise);color:var(--ink)}
+
+/* Столбцы по месяцам и колонки */
+.scols{display:flex;align-items:stretch;gap:10px;height:230px;border-bottom:1px solid var(--line-2);position:relative}
+.scol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;min-width:0}
+.scol .sv{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.sstack{width:min(54px,74%);display:flex;flex-direction:column-reverse;gap:2px}
+.sseg{border:0;padding:0;cursor:pointer;min-height:4px;width:100%}
+.sstack .sseg:last-child{border-radius:4px 4px 0 0}
+.sseg:hover{filter:brightness(1.2)}
+.xlabels{display:flex;gap:10px;margin-top:6px}
+.xlabels span{flex:1;text-align:center;font-size:12px;color:var(--muted);min-width:0}
+.cols{display:flex;align-items:flex-end;gap:14px;height:210px;border-bottom:1px solid var(--line-2);padding-top:24px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px;min-width:0;background:none;border:0;padding:0;cursor:pointer}
+.col .cv{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.col .cb{width:min(56px,80%);background:var(--accent);border-radius:4px 4px 0 0}
+.col .cb.plan{background:color-mix(in srgb,var(--accent) 42%,var(--panel))}
+.col .cb.none{background:transparent;border:1px dashed var(--bar-neutral);border-bottom:0}
+@media (hover:hover){.col:hover .cb{filter:brightness(1.18)}}
+.keyrow{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--ink-2)}
+.keyrow i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* Гистограмма */
+.histwrap{position:relative;padding-top:20px}
+.hist{display:flex;align-items:flex-end;gap:3px;height:170px;border-bottom:1px solid var(--line-2)}
+.hbin{flex:1;background:var(--bar-neutral);border:0;padding:0;border-radius:3px 3px 0 0;cursor:pointer}
+.hbin.hot{background:var(--risk)}
+@media (hover:hover){.hbin:hover{filter:brightness(1.25)}}
+.hmark{position:absolute;left:60%;top:0;bottom:0;border-left:1.5px dashed var(--risk);pointer-events:none}
+.hmark span{position:absolute;top:0;left:6px;font-size:11.5px;color:var(--risk-text);white-space:nowrap}
+.hx{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+
+/* Карта объёмов */
+.tmap{position:relative;width:100%;max-width:100%}
+.tcell{position:absolute;border:0;border-radius:8px;padding:9px 11px;text-align:left;cursor:pointer;overflow:hidden;color:#fff;display:flex;flex-direction:column;gap:2px;transition:filter .15s}
+.tcell b{font-size:13.5px;line-height:1.2;font-weight:600}
+.tcell span{font-size:12px;font-variant-numeric:tabular-nums;opacity:.92}
+.tcell.tiny{padding:6px 7px}
+.tcell.tiny span{display:none}
+.tcell.tiny b{font-size:11.5px}
+.tcell.micro{padding:0}
+.tcell.micro *{display:none}
+@media (hover:hover){.tcell:hover{filter:brightness(1.18)}}
+
+/* Тепловая карта */
+.heat th[scope="row"]{text-align:left;font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);background:none;font-weight:500;border-bottom:1px solid var(--line);white-space:normal;vertical-align:middle;min-width:150px}
+.heat th[scope="row"] button{background:none;border:0;padding:0;cursor:pointer;text-align:left;font-weight:600}
+.heat th[scope="row"] small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.heat td.hc{text-align:center;padding:5px 4px}
+.hcb{width:100%;min-width:46px;height:34px;border-radius:7px;border:0;cursor:pointer;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+@media (hover:hover){.hcb:hover{outline:2px solid var(--ink-2)}}
+.hcb.tot{background:var(--panel-2);border:1px solid var(--line-2)}
+.h0{color:var(--line-2)}
+.heat tfoot td{background:var(--head);font-weight:600}
+
+/* Реестр */
+.rfilters{display:grid;grid-template-columns:minmax(0,2fr) repeat(6,minmax(0,1fr));gap:10px}
+.field{display:grid;gap:5px;min-width:0}
+.field label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.field input,.field select{font:inherit;font-size:14px;width:100%;min-width:0;color:var(--ink);background:var(--head);border:1px solid var(--line-2);border-radius:10px;padding:9px 11px}
+.field input:focus,.field select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.ftoggle{display:none}
+.ftoggle .fcount{color:var(--accent-text);font-weight:600}
+.ftoggle .cr{margin-left:auto;color:var(--muted);transition:transform .2s}
+.ftoggle[aria-expanded="true"] .cr{transform:rotate(180deg)}
+.rbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.achips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+.fchip{font-size:12.5px;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);background:var(--panel-2);border-radius:8px;padding:3px 9px;cursor:pointer}
+.rsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rsum div{background:var(--head);padding:12px 14px;min-width:0}
+.rsum .v{font-family:var(--f-display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;line-height:1.2;overflow-wrap:anywhere}
+.rsum .l{font-size:12px;color:var(--muted)}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.morebox{display:flex;justify-content:center;padding:12px}
+.csvbox textarea{width:100%;height:130px;font-family:var(--f-mono);font-size:12px;border:1px solid var(--line-2);border-radius:10px;background:var(--head);color:var(--ink);padding:10px}
+
+/* Источники */
+.plain{margin:0;padding-left:20px;color:var(--ink-2);display:grid;gap:7px;font-size:14.5px}
+.sources{columns:2;column-gap:28px;margin:0;padding-left:20px;font-size:13.5px;color:var(--ink-2)}
+.sources li{break-inside:avoid;margin-bottom:6px}
+footer{padding-block:24px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line)}
+
+/* Карточка-досье */
+.scrim{position:fixed;inset:0;background:rgba(2,6,14,.6);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(600px,100%);background:var(--panel);border-left:1px solid var(--line-2);z-index:50;box-shadow:-16px 0 48px rgba(0,0,0,.5);display:flex;flex-direction:column;transform:translateX(24px);opacity:0;transition:transform .22s ease,opacity .22s ease;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.drawer.open{transform:none;opacity:1}
+.d-grab{display:none;width:40px;height:5px;border-radius:3px;background:var(--line-2);margin:8px auto 0;flex:none}
+.d-head{display:flex;align-items:flex-start;gap:12px;padding:18px 20px 14px;border-bottom:1px solid var(--line);flex:none}
+.d-head .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.d-head h3{font-family:var(--f-display);font-weight:700;font-size:19px;line-height:1.25;margin-top:4px}
+.d-close{margin-left:auto;flex:none;font-size:22px;line-height:1;width:38px;height:38px;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2);cursor:pointer}
+.d-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 20px 28px;display:grid;gap:18px;align-content:start}
+.d-body.slide-l{animation:inL .24s ease}
+.d-body.slide-r{animation:inR .24s ease}
+.d-text{color:var(--ink-2);font-size:14.5px}
+.kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 14px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;overflow-wrap:anywhere}
+.mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.mini div{background:var(--head);padding:12px}
+.mini .v{font-family:var(--f-display);font-weight:700;font-size:16px;font-variant-numeric:tabular-nums;line-height:1.25}
+.mini .l{font-size:12px;color:var(--muted)}
+.bigv{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.1;color:var(--accent-text)}
+.d-sec h4{margin:0 0 10px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.dseg-bar{display:flex;gap:2px;height:20px}
+.dseg-bar span{display:block;min-width:3px}
+.dseg-bar span:first-child{border-radius:4px 0 0 4px}
+.dseg-bar span:last-child{border-radius:0 4px 4px 0}
+.reclist{display:grid;gap:8px}
+.rec{text-align:left;cursor:pointer;display:grid;grid-template-columns:86px minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;border:1px solid var(--line);background:var(--head);border-radius:10px;padding:10px 12px;width:100%}
+@media (hover:hover){.rec:hover{border-color:var(--accent-line)}}
+.rec .rd{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.rec .rs{font-size:14px;line-height:1.35}
+.rec .ra{font-weight:600;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rec .rw{grid-column:2 / -1;font-size:12px;color:var(--muted)}
+.flagbox{display:grid;gap:8px}
+.flagbox div{border-left:3px solid var(--risk);padding:7px 11px;background:var(--head);border-radius:0 8px 8px 0;font-size:13.5px;color:var(--ink-2)}
+.flagbox b{display:block;color:var(--risk-text)}
+.d-actions{display:flex;flex-wrap:wrap;gap:8px}
+.d-foot{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);background:var(--panel);flex:none}
+.d-step{font-size:13px;display:flex;align-items:center;gap:6px;min-width:0;min-height:42px;border:1px solid var(--line-2);background:var(--panel-2);border-radius:10px;padding:6px 12px;cursor:pointer}
+.d-step.next{justify-content:flex-end;text-align:right}
+.d-step .d-nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.d-step .d-arr{font-size:20px;line-height:1;color:var(--accent-text);flex:none}
+.d-pos{display:grid;justify-items:center;text-align:center;font-size:13px;color:var(--ink-2);line-height:1.25;font-variant-numeric:tabular-nums;min-width:0}
+.d-pos small{font-size:11px;color:var(--muted);max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d-hint{display:none;font-size:11px;color:var(--muted)}
+@media (pointer:coarse){.d-hint{display:block}}
+
+.tip{position:fixed;z-index:60;max-width:290px;background:#f1f4fa;color:#0b1426;font-size:13px;line-height:1.4;padding:7px 10px;border-radius:8px;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#f1f4fa;color:#0b1426;padding:10px 16px;border-radius:12px;font-size:14px;z-index:70;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.kpi:active,.btn:active,.chip:active,.d-step:active,.mnav-step:active,.mnav-cur:active,.rec:active,.tcell:active{transform:scale(.98)}
+
+@media (max-width:1100px){
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rfilters{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rfilters .fq{grid-column:1 / -1}
+}
+@media (max-width:960px){
+  .s4,.s5,.s7,.s8{grid-column:1 / -1}
+  .sources{columns:1}
+  .hide-md{display:none}
+}
+@media (max-width:760px){
+  .tabs{display:none}
+  .mnav{display:flex}
+  .s6{grid-column:1 / -1}
+  .live{display:none}
+  .bar1{padding-block:14px}
+  .logo{width:40px;height:40px;border-radius:11px}
+  .logo svg{width:23px;height:23px}
+  .ttl h1{font-size:18px}
+}
+@media (max-width:640px){
+  main{padding-block:14px 32px}
+  .tab{gap:12px}
+  .panel{padding:14px;border-radius:12px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .kpi{padding:12px}
+  .kpi .kv{font-size:16px}
+  .lead{font-size:14px}
+  .hide-sm{display:none}
+  .donut{grid-template-columns:minmax(0,1fr);justify-items:center}
+  .donut .legend{width:100%}
+  .scols{height:200px;gap:6px}
+  .xlabels{gap:6px}
+  .cols{height:180px;gap:8px}
+  .rfilters{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rfilters .fopt{display:none}
+  .rfilters.open .fopt{display:grid}
+  .ftoggle{display:flex;grid-column:1 / -1}
+  .rsum{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rsum .v{font-size:16px}
+  .cards{border:0;border-radius:0;overflow:visible}
+  .cards table{display:block}
+  .cards thead{display:none}
+  .cards tbody{display:grid;gap:10px}
+  .cards tbody tr{display:grid;gap:4px 12px;background:var(--head);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .cards td{display:block;padding:0;border:0;background:none!important}
+  .cards td.empty{grid-column:1 / -1}
+  .reg tbody tr{grid-template-columns:minmax(0,1fr) auto}
+  .reg td:nth-child(1){grid-column:1;grid-row:1}
+  .reg td:nth-child(2){grid-column:1;grid-row:2;font-size:13px;font-weight:600;color:var(--ink-2)}
+  .reg td:nth-child(3){grid-column:1 / -1;grid-row:3;font-size:15px}
+  .reg td:nth-child(4){grid-column:1;grid-row:4;font-size:13px;color:var(--ink-2)}
+  .reg td:nth-child(5){grid-column:2;grid-row:1 / span 2}
+  .reg td:nth-child(6){grid-column:2;grid-row:4;text-align:right}
+  .top tbody tr{grid-template-columns:26px repeat(3,minmax(0,1fr))}
+  .top td:nth-child(1){grid-column:1;grid-row:1}
+  .top td:nth-child(2){grid-column:2 / -1;grid-row:1}
+  .top td:nth-child(3){grid-column:2 / -1;grid-row:2}
+  .top td:nth-child(4),.top td:nth-child(7){display:none}
+  .top td:nth-child(5){grid-column:2;grid-row:3;text-align:left}
+  .top td:nth-child(6){grid-column:3;grid-row:3;text-align:left}
+  .top td:nth-child(8){grid-column:4;grid-row:3;text-align:right}
+  .top td[data-label]::before{content:attr(data-label);display:block;font-size:11px;color:var(--muted);font-weight:400;font-family:var(--f-body);text-transform:uppercase;letter-spacing:.05em}
+  .tmap .tcell b{font-size:12px}
+  .drawer{top:auto;left:0;right:0;bottom:0;width:100%;height:calc(100% - 44px - env(safe-area-inset-top,0px));border-radius:18px 18px 0 0;border-left:0;border-top:1px solid var(--line-2);transform:translateY(64px);padding:0;box-shadow:0 -16px 48px rgba(0,0,0,.55)}
+  .d-grab{display:block}
+  .d-head{padding-block:6px 12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));touch-action:none}
+  .d-head h3{font-size:17px}
+  .d-body{padding-block:16px 20px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .d-foot{padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+  .d-step{padding:6px 10px}
+  .kv{grid-template-columns:104px minmax(0,1fr);gap:7px 12px;font-size:13.5px}
+  .mini{grid-template-columns:minmax(0,1fr)}
+  .rec{grid-template-columns:minmax(0,1fr) auto}
+  .rec .rd,.rec .rw{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap bar1">
+    <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="13" width="3.4" height="8" rx="1.2" fill="currentColor"></rect><rect x="7.6" y="9" width="3.4" height="12" rx="1.2" fill="currentColor"></rect><path d="M15.4 3h3.2v3.4H22v3.2h-3.4V13h-3.2V9.6H12V6.4h3.4z" fill="currentColor"></path></svg></div>
+    <div class="ttl"><h1>МедЗакупки Москвы <span>2026</span></h1><p>Аналитика открытых закупок здравоохранения · 44-ФЗ</p></div>
+    <span class="live"><i></i>Данные на 14.10.2026</span>
+  </div>
+</header>
+<nav class="tabsbar" aria-label="Разделы дашборда">
+  <div class="wrap">
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="mnav">
+      <button class="mnav-step" type="button" id="mprev" aria-label="Предыдущий раздел">‹</button>
+      <button class="mnav-cur" type="button" id="mcur" aria-haspopup="true" aria-expanded="false" aria-controls="secmenu"><span class="mnav-no" id="mno"></span><span class="mnav-name" id="mname"></span><span class="mnav-caret" aria-hidden="true">▾</span></button>
+      <button class="mnav-step" type="button" id="mnext" aria-label="Следующий раздел">›</button>
+    </div>
+  </div>
+  <div class="secmenu" id="secmenu" hidden></div>
+</nav>
+
+<main class="wrap" id="main">
+  <!-- ОБЗОР -->
+  <section class="tab" id="overview" role="tabpanel" aria-labelledby="tb-overview">
+    <p class="lead">Москва — <b>≈14% госзакупок России</b>, а здравоохранение — крупнейший блок городского заказа. Нажмите на любую плитку, сегмент или строку.</p>
+    <div class="kpis" id="kpis"></div>
+    <article class="panel s5">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"></circle><path d="M12 4v8l6 4"></path></svg>Что покупают</h3><p class="sub" id="donut-sub"></p></div>
+        <div class="toggle" role="group" aria-label="Мера"><button type="button" data-dm="sum" aria-pressed="true">сумма</button><button type="button" data-dm="cnt" aria-pressed="false">число</button></div></div>
+      <div class="donut"><div class="dfig" id="donut"></div><div class="legend" id="donut-leg"></div></div>
+    </article>
+    <article class="panel s7">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>Публикации по месяцам</h3><p class="sub">число процедур выборки по категориям</p></div></div>
+      <div><div class="scols" id="mcols"></div><div class="xlabels" id="mcols-x"></div></div>
+    </article>
+    <article class="panel s7">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10h4v11M10 21V5h4v16M15 21v-8h4v8"></path></svg>Топ-5 заказчиков</h3><p class="sub">накопленный объём контрактов в ЕИС</p></div><button class="lnk" type="button" data-tab="customers">Все 15 →</button></div>
+      <div class="tbox"><table><thead><tr><th>#</th><th>Заказчик</th><th>Объём</th><th class="r">2026</th></tr></thead><tbody id="top5"></tbody></table></div>
+    </article>
+    <article class="panel s5">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"></path></svg>Способы закупки</h3><p class="sub">число процедур</p></div></div>
+      <div class="hbars" id="procs"></div>
+    </article>
+    <article class="panel s7">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M17 7H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"></path></svg>Крупнейшие закупки 2026</h3><p class="sub">по сумме</p></div><button class="lnk" type="button" data-reg="sort=sum-desc">Весь реестр →</button></div>
+      <div class="tbox"><table><thead><tr><th>Предмет · заказчик</th><th class="r">Сумма</th><th class="hide-sm">Дата</th><th class="hide-sm">Статус</th></tr></thead><tbody id="largest"></tbody></table></div>
+    </article>
+    <article class="panel s5">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 20h20L12 3z"></path><path d="M12 10v4M12 17h.01"></path></svg>Сигналы риска</h3><p class="sub">процедур с сигналом</p></div><button class="lnk" type="button" data-tab="risks">Подробнее →</button></div>
+      <div class="hbars" id="flagbars"></div>
+    </article>
+  </section>
+
+  <!-- ЗАКАЗЧИКИ -->
+  <section class="tab" id="customers" role="tabpanel" aria-labelledby="tb-customers" hidden>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M12 3v18M12 12h9"></path></svg>Карта объёмов</h3><p class="sub">накопленный объём контрактов, 11 заказчиков с известным объёмом · площадь = доля</p></div></div>
+      <div class="tmap" id="tmap"></div>
+    </article>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg>Топ-15 заказчиков</h3><p class="sub">нажмите на заголовок, чтобы отсортировать, на строку — чтобы открыть карточку</p></div></div>
+      <div class="tbox cards top"><table><thead id="top-head"></thead><tbody id="top-body"></tbody></table></div>
+      <p class="src">Объём — сумма всех контрактов заказчика в ЕИС за все годы (synapsenet.ru). Для 4 учреждений объём не найден.</p>
+    </article>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M6 12h12M9 17h6"></path></svg>Система ДЗМ по группам</h3><p class="sub">нажмите на группу, чтобы раскрыть учреждения</p></div></div>
+      <div class="tbox"><table><thead><tr><th>Группа · учреждение</th><th class="r hide-sm">Учрежд.</th><th class="r">Закупок 2026</th><th class="r">Сумма 2026</th><th class="r hide-sm">Накопл. объём</th></tr></thead><tbody id="groups"></tbody></table></div>
+    </article>
+  </section>
+
+  <!-- РЕЕСТР -->
+  <section class="tab" id="registry" role="tabpanel" aria-labelledby="tb-registry" hidden>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6h12M9 12h12M9 18h12M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"></path></svg>Реестр закупок 2026</h3><p class="sub">реальные процедуры из открытых зеркал ЕИС · строка открывает карточку</p></div>
+        <div class="pa" id="riskchips"></div></div>
+      <div class="rfilters" id="rfilters">
+        <div class="field fq"><label for="f-q">Поиск</label><input id="f-q" type="search" placeholder="предмет, заказчик, победитель"></div>
+        <button class="btn ftoggle" type="button" id="ftoggle" aria-expanded="false" aria-controls="rfilters">Фильтры<span class="fcount" id="fcount"></span><span class="cr" aria-hidden="true">▾</span></button>
+        <div class="field fopt"><label for="f-cust">Заказчик</label><select id="f-cust"></select></div>
+        <div class="field fopt"><label for="f-cat">Категория</label><select id="f-cat"></select></div>
+        <div class="field fopt"><label for="f-month">Месяц</label><select id="f-month"></select></div>
+        <div class="field fopt"><label for="f-flag">Сигнал</label><select id="f-flag"></select></div>
+        <div class="field fopt"><label for="f-proc">Способ</label><select id="f-proc"></select></div>
+        <div class="field fopt fsort"><label for="f-sort">Сортировка</label><select id="f-sort"><option value="date-desc">Сначала новые</option><option value="date-asc">Сначала старые</option><option value="sum-desc">Сначала дорогие</option><option value="sum-asc">Сначала дешёвые</option></select></div>
+      </div>
+      <div class="rbar"><div class="achips" id="achips"></div><div class="pa"><button class="btn" type="button" id="r-reset">Сбросить</button><button class="btn primary" type="button" id="r-copy">Скопировать CSV</button></div></div>
+      <div class="csvbox" id="csvbox" hidden><p class="src">Буфер обмена недоступен. Выделите текст и скопируйте вручную:</p><textarea id="csvtext" readonly></textarea></div>
+      <div class="rsum" id="rsum"></div>
+      <div class="tbox cards reg"><table><thead><tr><th><button class="sb" type="button" data-rsort="date">Дата <span class="ar" id="ar-date"></span></button></th><th>Заказчик</th><th>Предмет закупки</th><th>Категория</th><th class="r"><button class="sb" type="button" data-rsort="sum">Сумма <span class="ar" id="ar-sum"></span></button></th><th>Статус</th></tr></thead><tbody id="r-body"></tbody></table>
+        <div class="morebox" id="r-more" hidden><button class="btn" type="button" id="r-morebtn">Показать все</button></div></div>
+    </article>
+  </section>
+
+  <!-- РИСКИ -->
+  <section class="tab" id="risks" role="tabpanel" aria-labelledby="tb-risks" hidden>
+    <div class="kpis" id="riskkpis"></div>
+    <article class="panel s5">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 20h20L12 3z"></path><path d="M12 10v4M12 17h.01"></path></svg>Сигналы в выборке</h3><p class="sub">процедур с сигналом · нажмите, чтобы открыть</p></div></div>
+      <div class="hbars" id="flagbars2"></div>
+    </article>
+    <article class="panel s7">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V14M8 20V9M12 20V12M16 20V5M20 20V15"></path></svg>Цены у порога котировок</h3><p class="sub">число закупок по цене, шаг 0,25 млн ₽ · до 5 млн ₽</p></div></div>
+      <div class="histwrap"><div class="hmark"><span>порог 3 млн ₽</span></div><div class="hist" id="hist"></div></div>
+      <div class="hx"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5 млн ₽</span></div>
+      <p class="src" id="hist-note"></p>
+    </article>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>Тепловая карта: заказчик × сигнал</h3><p class="sub">число процедур · ячейка открывает закупки в реестре</p></div></div>
+      <div class="tbox"><table class="heat" id="heat"></table></div>
+    </article>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>Контекст рынка</h3><p class="sub">решения ФАС и аудиторов · строка открывает подробности</p></div></div>
+      <div class="tbox"><table><thead><tr><th>Показатель</th><th class="r">Значение</th><th class="hide-sm">Комментарий</th><th class="hide-sm">Источник</th></tr></thead><tbody id="ctx"></tbody></table></div>
+    </article>
+  </section>
+
+  <!-- СТАТИСТИКА -->
+  <section class="tab" id="stats" role="tabpanel" aria-labelledby="tb-stats" hidden>
+    <article class="panel s6">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M17 7H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"></path></svg>Финансирование 2026</h3><p class="sub">млрд ₽ · показатели пересекаются, не суммируйте</p></div></div>
+      <div class="hbars" id="fund"></div>
+    </article>
+    <article class="panel s6">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>Бюджет МГФОМС (ОМС)</h3><p class="sub">расходы, млрд ₽</p></div></div>
+      <div><div class="cols" id="oms"></div><div class="xlabels" id="oms-x" style="gap:14px"></div></div>
+      <div class="keyrow"><span><i style="background:var(--accent)"></i>исполнение</span><span><i style="background:color-mix(in srgb,var(--accent) 42%,var(--panel))"></i>план</span><span><i style="border:1px dashed var(--bar-neutral)"></i>нет данных</span></div>
+    </article>
+    <article class="panel s6">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 2 4 4M17 7l3-3M19 9l-8 8-4 1 1-4 8-8M7 17l-4 4"></path></svg>Вакцины, I полугодие 2026</h3><p class="sub">млрд ₽ · Москва — 77% закупок страны</p></div></div>
+      <div class="hbars" id="vacc"></div>
+    </article>
+    <article class="panel s6">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18v11H3zM3 9l2-5h14l2 5M9 13h6"></path></svg>Портал поставщиков: медицина</h3><p class="sub">тыс. контрактов, январь–май</p></div><div class="keyrow"><span><i style="background:var(--bar-neutral)"></i>2025</span><span><i style="background:var(--accent)"></i>2026</span></div></div>
+      <div class="hbars" id="portal"></div>
+    </article>
+    <article class="panel s6">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18l-7 8v6l-4 2v-8z"></path></svg>ФАС, I полугодие 2026</h3><p class="sub">жалобы на закупки, вся Россия</p></div></div>
+      <div class="hbars" id="fas"></div>
+    </article>
+    <article class="panel s6">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg>Экономия и конкуренция</h3><p class="sub">Москва</p></div></div>
+      <div class="tbox"><table><tbody id="econ"></tbody></table></div>
+    </article>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"></path></svg>Было → стало</h3><p class="sub">ключевые показатели в динамике · строка открывает источник</p></div></div>
+      <div class="tbox"><table><thead><tr><th>Показатель</th><th class="r">Было</th><th class="r">Стало</th><th class="r">Изменение</th><th class="hide-sm">Период</th></tr></thead><tbody id="delta"></tbody></table></div>
+    </article>
+  </section>
+
+  <!-- ТЕНДЕНЦИИ -->
+  <section class="tab" id="trends" role="tabpanel" aria-labelledby="tb-trends" hidden>
+    <article class="panel s12">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"></path></svg>Тренды 2026</h3><p class="sub">нажмите на строку, чтобы раскрыть</p></div></div>
+      <div class="tbox"><table><thead><tr><th>Тренд</th><th>Показатель</th><th class="hide-sm">Коротко</th></tr></thead><tbody id="trendrows"></tbody></table></div>
+    </article>
+    <article class="panel s7">
+      <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>Хронология</h3><p class="sub">решения и события, которые меняют правила</p></div><div class="pa" id="evchips"></div></div>
+      <div class="tbox"><table><thead><tr><th>Дата</th><th>Событие</th><th class="hide-sm">Тип</th></tr></thead><tbody id="events"></tbody></table></div>
+    </article>
+    <div class="s5" style="display:grid;gap:16px">
+      <article class="panel">
+        <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10h4v11M10 21V5h4v16M15 21v-8h4v8"></path></svg>Лидеры поставок лекарств</h3><p class="sub">госпитальный сегмент России, I кв. 2026, млрд ₽</p></div></div>
+        <div class="hbars" id="supp"></div>
+      </article>
+      <article class="panel">
+        <div class="ph"><div><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"></circle><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"></path></svg>Победители в выборке</h3><p class="sub">по сумме выигранных процедур</p></div></div>
+        <div class="hbars" id="winners"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ИСТОЧНИКИ -->
+  <section class="tab" id="sources" role="tabpanel" aria-labelledby="tb-sources" hidden>
+    <article class="panel s7">
+      <div class="ph"><h3>Как собраны данные</h3></div>
+      <ol class="plain">
+        <li>Закупки 2026 года — из открытых зеркал ЕИС: BidsFactory (данные «ГосПлана»), Saby Тендеры, Ростендер, Бикотендер. Портал zakupki.gov.ru недоступен из-за рубежа.</li>
+        <li>Выборка — <b id="m-n"></b> процедур <b id="m-c"></b> заказчиков ДЗМ за апрель–октябрь 2026 года: крупнейшие найденные процедуры каждого заказчика.</li>
+        <li>«НМЦК» — начальная цена из извещения. «Итог» — сумма завершённой закупки по данным зеркала; она может совпадать с НМЦК.</li>
+        <li>Накопленный объём заказчика — сумма всех его контрактов в ЕИС по данным synapsenet.ru.</li>
+        <li>Сигналы риска считаются автоматически по правилам из карточек. Это повод проверить, а не вывод о нарушении.</li>
+      </ol>
+      <p class="src">Полная выгрузка из России: ЕИС → расширенный поиск → регион «Москва», заказчики ДЗМ, ОКПД2 21 и 32.50 → экспорт в Excel.</p>
+    </article>
+    <article class="panel s5">
+      <div class="ph"><h3>Ограничения</h3></div>
+      <ul class="plain">
+        <li>Суммы выборки — не общий объём закупок ДЗМ за 2026 год.</li>
+        <li>Месяцы смещены источниками: BidsFactory — апрель–июль, Ростендер — октябрь.</li>
+        <li>Вакцины (28,54 млрд ₽) считаются по региону заказчика и включают федеральную программу.</li>
+        <li>ИНН победителей-предпринимателей показаны как в источнике.</li>
+      </ul>
+    </article>
+    <article class="panel s12">
+      <div class="ph"><h3>Источники</h3></div>
+      <ol class="sources" id="srclist"></ol>
+    </article>
+  </section>
+</main>
+
+<footer><div class="wrap">МедЗакупки Москвы 2026 · анализ открытых данных о закупках · Платон Теплицкий, группа ЦГиЭ24-1, Финансовый университет при Правительстве РФ</div></footer>
+
+<div class="scrim" id="scrim" hidden data-close></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title" hidden>
+  <div class="d-grab" aria-hidden="true"></div>
+  <div class="d-head">
+    <div style="min-width:0"><div class="k" id="d-kicker"></div><h3 id="d-title"></h3></div>
+    <button class="d-close" type="button" data-close aria-label="Закрыть карточку">×</button>
+  </div>
+  <div class="d-body" id="d-body"></div>
+  <div class="d-foot" id="d-foot" hidden></div>
+</aside>
+<div class="tip" id="tip" hidden></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+'use strict';
+const BF='https://bidsfactory.com/en/tenders/', SB='https://saby.ru/tenders/card/';
+const RT52='https://rostender.info/category/tendery-gbuz-gkb-dzm-gos-76162';
+const RTY='https://rostender.info/category/tendery-gbuz-gkb-im-ss-yudina-dzm-gos-75485';
+const RTM='https://rostender.info/category/tendery-morozovskaya-detskaya-bolnica';
+const L='Лекарства', M='Медизделия', O='Оборудование', U='Услуги и работы', P='Питание', H='Хозяйственное и прочее';
+const CATS=[L,M,O,U,P,H];
+const CATCOL={[L]:'var(--c1)',[M]:'var(--c2)',[O]:'var(--c3)',[U]:'var(--c4)',[P]:'var(--c5)',[H]:'var(--c6)'};
+const SYN='https://synapsenet.ru/organizacii/1157746406025';
+
+const GROUPS={top:'Орган управления',svc:'Закупочные и сервисные учреждения',hosp:'Многопрофильные стационары',sci:'НИИ и научно-практические центры',child:'Детская помощь',other:'Онкология, амбулаторное звено, совместные закупки'};
+
+/* Заказчики: total — накопленный объём контрактов в ЕИС (synapsenet), n — число контрактов, bf — извещения 2026 на BidsFactory */
+const C={
+ dzm:{short:'ДЗМ',full:'Департамент здравоохранения города Москвы',inn:'7707089084',g:'top',total:183127002179,n:6963,
+   role:'Главный распорядитель бюджетных средств городского здравоохранения и учредитель медицинских организаций. Расходы бюджета Москвы на здравоохранение в 2026 году — 615 млрд ₽, с учётом ОМС — более 1 трлн ₽.',
+   note:'Собственных извещений ДЗМ за 2026 год в изученных зеркалах ЕИС не найдено: торги проводят подведомственные учреждения и контрактная служба.'},
+ az:{short:'Агентство по закупкам ДЗМ',full:'ГКУ «Агентство по закупкам (контрактная служба) Департамента здравоохранения города Москвы»',inn:'7714338609',g:'svc',total:673968104154,n:92727,bf:239,
+   role:'Контрактная служба департамента. Проводит централизованные аукционы для льготного лекарственного обеспечения (номера вида Z26…), закупает лечебное питание и расходные материалы. Имеет филиал № 1 (ещё 172 извещения на BidsFactory).',
+   note:'Крупнейший медицинский заказчик Москвы: накопленный объём в 3,7 раза больше, чем у самого ДЗМ.'},
+ clo:{short:'ЦЛО ДЗМ',full:'ГБУЗ «Центр лекарственного обеспечения ДЗМ»',inn:'7720023269',g:'svc',total:18144918875,n:5190,
+   role:'Аптечные склады и логистика лекарственного обеспечения города. В выборке 2026 года — ремонт складской инфраструктуры.'},
+ dkd:{short:'Дирекция по координации ДЗМ',full:'ГКУ «Дирекция по координации деятельности медицинских организаций ДЗМ»',inn:'7726020722',g:'svc',total:9096941115,n:29835,
+   role:'Координирует деятельность медицинских организаций департамента. Заключает много небольших контрактов: средний контракт около 0,3 млн ₽.',
+   note:'Закупок 2026 года в изученных зеркалах не найдено.'},
+ gormed:{short:'Гормедтехника',full:'ГАУ ИНПЦ «Гормедтехника» ДЗМ',g:'svc',
+   role:'Центр ДЗМ по медицинской технике. Приказ ДЗМ 2026 года регулирует его взаимодействие с больницами и поставщиками по договорам жизненного цикла: поставка, установка и поддержание работоспособности оборудования.'},
+ botkin:{short:'ММНКЦ им. Боткина',full:'ГБУЗ «Московский многопрофильный научно-клинический центр им. С.П. Боткина ДЗМ»',inn:'7714082636',g:'hosp',total:99590508885,n:17332,bf:123,
+   role:'Крупнейший многопрофильный стационар города и лидер по числу хирургических роботов (6 систем da Vinci). 19.02.2026 УФАС Москвы отклонило жалобу на один из его аукционов (лот 130, медизделия).'},
+ yudin:{short:'ГКБ им. Юдина',full:'ГБУЗ «Городская клиническая больница им. С.С. Юдина ДЗМ»',inn:'7724070870',g:'hosp',total:88772177289,n:16745,
+   role:'Многопрофильная больница. Ей принадлежит самая дорогая процедура выборки — пертузумаб для онкопациентов на 2027 год.'},
+ kommunarka:{short:'ММКЦ «Коммунарка»',full:'ГБУЗ «Московский многопрофильный клинический центр «Коммунарка» ДЗМ»',inn:'7716099554',g:'hosp',total:82843358136,n:13949,bf:86,
+   role:'Многопрофильный центр с сильным онкологическим профилем: реагенты для иммуногистохимии (PD-L1), онкопрепараты, расходники для электрохирургии.'},
+ b52:{short:'Больница 52',full:'ГБУЗ «Московский клинический научно-исследовательский центр Больница 52 ДЗМ» (ГКБ № 52)',inn:'7734115329',g:'hosp',total:34009318000,n:10817,
+   role:'Многопрофильный клинический научно-исследовательский центр. В октябре 2026 года выставил серию крупных лотов антибиотиков и противогрибковых препаратов.'},
+ pirogov:{short:'ГКБ № 1 им. Пирогова',full:'ГБУЗ «Городская клиническая больница № 1 им. Н.И. Пирогова ДЗМ»',inn:'7706055854',g:'hosp',total:27375792930,n:8796,bf:92,
+   role:'Одна из старейших больниц Москвы. Не путать с федеральным НМХЦ им. Пирогова Минздрава России. В выборке — преимущественно мелкие закупки расходных материалов.'},
+ veresaev:{short:'ГКБ им. Вересаева',full:'ГБУЗ «Городская клиническая больница им. В.В. Вересаева ДЗМ»',g:'hosp',bf:162,
+   role:'Многопрофильная больница и самый активный заказчик выборки по числу извещений 2026 года.'},
+ gkb15:{short:'ГКБ № 15 им. Филатова',full:'ГБУЗ «Городская клиническая больница № 15 им. О.М. Филатова ДЗМ»',g:'hosp',bf:95,
+   role:'Многопрофильная больница. Четыре из пяти её процедур в выборке имеют цену в узком диапазоне 2,97–3,0 млн ₽.'},
+ inozem:{short:'ГКБ им. Иноземцева',full:'ГБУЗ «Городская клиническая больница им. Ф.И. Иноземцева ДЗМ»',g:'hosp',bf:37,role:'Многопрофильная больница.'},
+ konch:{short:'ГКБ им. Кончаловского',full:'ГБУЗ «Городская клиническая больница им. М.П. Кончаловского ДЗМ»',g:'hosp',bf:43,role:'Многопрофильная больница в Зеленограде.'},
+ demikhov:{short:'ГКБ им. Демихова',full:'ГБУЗ «Городская клиническая больница им. В.П. Демихова ДЗМ»',g:'hosp',role:'Многопрофильная больница. В выборке — реагенты для анализаторов конкретных марок.'},
+ sklif:{short:'НИИ им. Склифосовского',full:'ГБУЗ «Научно-исследовательский институт скорой помощи им. Н.В. Склифосовского ДЗМ»',inn:'7702036321',g:'sci',total:39695144553,n:9115,bf:22,
+   role:'Городской НИИ скорой помощи. Крупнейшая его процедура в выборке — расходные материалы для рентгенохирургии.'},
+ loginov:{short:'МКНЦ им. Логинова',full:'ГБУЗ «Московский клинический научный центр им. А.С. Логинова ДЗМ»',g:'sci',bf:102,
+   role:'Многопрофильный научный центр. Закупает поэтапно: в названиях процедур указаны «этап 16», «этап 67», «этап 86».'},
+ mnpcli:{short:'МНПЦЛИ',full:'ГБУЗ «Московский научно-практический центр лабораторных исследований ДЗМ»',g:'sci',bf:83,
+   role:'Централизованная лабораторная служба ДЗМ. Покупает реагенты под конкретные анализаторы и лабораторное оборудование; крупнейший лот — 70,9 млн ₽.'},
+ mrvsm:{short:'МНПЦ МРВСМ',full:'ГАУЗ «Московский научно-практический центр медицинской реабилитации, восстановительной и спортивной медицины им. С.И. Спасокукоцкого ДЗМ»',g:'sci',role:'Центр медицинской реабилитации и спортивной медицины.'},
+ blood:{short:'Центр крови им. Гаврилова',full:'ГБУЗ «Центр крови им. О.К. Гаврилова ДЗМ»',g:'sci',role:'Служба крови города.'},
+ morozov:{short:'Морозовская ДГКБ',full:'ГБУЗ «Морозовская детская городская клиническая больница ДЗМ»',inn:'7705039232',g:'child',total:45084835129,n:13785,bf:71,
+   role:'Крупнейшая детская больница Москвы. Октябрьские лоты 2026 года — препараты для детской онкогематологии и обращение с медицинскими отходами.'},
+ dgkbfil:{short:'ДГКБ им. Филатова',full:'ГБУЗ «Детская городская клиническая больница им. Н.Ф. Филатова ДЗМ»',inn:'7703111067',g:'child',bf:24,role:'Детская многопрофильная больница.'},
+ bashl:{short:'ДГКБ им. Башляевой',full:'ГБУЗ «Детская городская клиническая больница им. З.А. Башляевой ДЗМ»',g:'child',role:'Детская многопрофильная больница.'},
+ vlad:{short:'ДГКБ св. Владимира',full:'ГБУЗ «Детская городская клиническая больница святого Владимира ДЗМ»',g:'child',bf:28,role:'Детская многопрофильная больница.'},
+ dgp52:{short:'ДГП № 52',full:'ГБУЗ «Детская городская поликлиника № 52 ДЗМ»',g:'child',role:'Детская поликлиника.'},
+ mgob62:{short:'МГОБ № 62',full:'ГБУЗ «Московская городская онкологическая больница № 62 ДЗМ»',g:'other',role:'Специализированная онкологическая больница.'},
+ kdc6:{short:'КДЦ № 6',full:'ГБУЗ «Консультативно-диагностический центр № 6 ДЗМ»',g:'other',role:'Амбулаторный диагностический центр.'},
+ sp48:{short:'СП № 48',full:'ГАУЗ «Стоматологическая поликлиника № 48 ДЗМ»',inn:'7728289341',g:'other',role:'Стоматологическая поликлиника. Закупает материалы в том числе для платных медицинских услуг.'},
+ joint:{short:'Совместный конкурс (охрана)',full:'Организатор совместного конкурса, ИНН 7729198714',inn:'7729198714',g:'other',role:'Организатор совместной закупки услуг частной охраны для объектов системы здравоохранения Москвы на 2026–2027 годы.'}
+};
+
+/* Закупки 2026: [заказчик, предмет, категория, способ, дата, сумма ₽, тип суммы (n — НМЦК, a — итог), победитель, статус (a — определён, o — приём заявок, r — итоги без суммы), ссылка] */
+const RAW=[
+ ['az','Авелумаб: индивидуальное обеспечение льготников (УНЗ Z2617446)',L,'аукцион','2026-06-04',36593040,'a','ООО «ЗДРАВСЕРВИС»','a',BF+'-z2617446-gosplan_ru-bd1a5c5f7fef748c'],
+ ['az','Специализированный продукт лечебного питания для граждан с правом на госсоцпомощь (УНЗ С260249)',P,'аукцион','2026-05-19',3678430.08,'a','ИНН 772783184810','a',BF+'-260249-gosplan_ru-95886bed6db5069f'],
+ ['az','Анакинра, филиал № 1 (УНЗ Z2623310)',L,'аукцион','2026-07-31',2175085.99,'a','АО «Р-ФАРМ»','a',BF+'-z2623310-gosplan_ru-dec83db870e3cdee'],
+ ['az','Расходные материалы для лечения ВИЧ-инфекции (МИ2026-273)',M,'аукцион','2026-08-06',697581.84,'n',null,'o',SB+'246752658'],
+ ['az','Сультиам (УНЗ Z2618721)',L,'аукцион','2026-06-11',607200,'a','ООО «КОМПАС»','a',BF+'-z2618721-gosplan_ru-1759b3f95883aaec'],
+ ['az','Акситиниб (УНЗ Z2615290)',L,'аукцион','2026-05-20',427600.32,'a','ИНН 7722005709','a',BF+'-z2615290-gosplan_ru-bbc96b3d94d34ff5'],
+ ['az','Ципрофлоксацин для граждан с правом на госсоцпомощь (УНЗ Z2619860), повторная закупка',L,'аукцион','2026-05-27',24217,'n',null,'o',BF+'-z2619860-gosplan_ru-453d632ee179d7a3'],
+ ['clo','Ремонт кровли складского строения № 8, аптечный склад № 5',U,'конкурс','2026-06-29',14799940.69,'n',null,'o',SB+'244709798'],
+ ['sklif','Расходные материалы для рентгенохирургии (П.М.-2026, лот 8)',M,'аукцион','2026-05-05',28281440,'a','ООО «АМИ»','a',BF+'-20268-gosplan_ru-296cc1c1b14695a1'],
+ ['sklif','Реагенты для анализаторов Dymind DH-800 (РЛ-2648)',M,'аукцион','2026-07-07',6037229,'n',null,'o',SB+'245166536'],
+ ['sklif','Продукты питания (компот), лот 3',P,'конкурс','2026-06-26',3956750,'n',null,'o',SB+'244572947'],
+ ['sklif','Стенты для периферических артерий (П-22-2026)',M,'аукцион','2026-07-09',672263.30,'n',null,'o',SB+'245289855'],
+ ['botkin','Наборы инфузионные однократного применения для помп на 2026–2027 годы, включая ВМП',M,'аукцион','2026-07-06',27910867.70,'n',null,'o',SB+'245095179'],
+ ['botkin','Медизделия однократного применения: сетки хирургические (ГП2026-03)',M,'аукцион','2026-05-28',14165306.40,'n',null,'o',SB+'242706555'],
+ ['botkin','Расходные материалы',M,'аукцион','2026-05-14',5331218.16,'a','ИНН 540134558477','a',BF+'-gosplan_ru-ee34e2ad0c3b5d35'],
+ ['botkin','Инструменты эндоскопические однократного применения (ИЭ2026-19)',M,'аукцион','2026-05-20',4600000,'a','ООО «СТЕРИСКОП»','a',BF+'2026-19-gosplan_ru-de61124b8751295c'],
+ ['botkin','Медизделия однократного применения (ЗПТ2026-28)',M,'аукцион','2026-05-19',4347000,'a','ИНН 773320706330','a',BF+'2026-28-gosplan_ru-9b588efd0a446120'],
+ ['botkin','Диспенсеры бытовые',H,'аукцион','2026-04-29',3895000,'a','ИНН 622505400966','a',BF+'-gosplan_ru-a17a8774ddea1f02'],
+ ['pirogov','Катетеры аспирационные трахеальные',M,'аукцион','2026-09-02',700425,'n',null,'o',SB+'248299743'],
+ ['pirogov','Аминокислоты и жировые эмульсии для парентерального питания',L,'не указан','2026-05-19',443279,'a','ООО «ФАРМЛАЙН»','a',BF+'-gosplan_ru-697f79f7aea90872'],
+ ['pirogov','Расходные материалы для артроскопии, лот 4 (для СМП)',M,'аукцион','2026-05-28',69276,'n',null,'o',SB+'242686774'],
+ ['pirogov','Расходные медицинские материалы (головодержатель)',M,'котировки','2026-04-27',58000,'a','ИНН 671201779566','a',BF+'-no1-gosplan_ru-76ec5b5f071bcaa0'],
+ ['kommunarka','Расходные материалы для автостейнера DAKO Link 48 (PD-L1), лот 2',M,'котировки','2026-07-07',9463589.64,'n',null,'o',SB+'245162441'],
+ ['kommunarka','Принадлежности для электрохирургического аппарата',M,'аукцион','2026-04-27',2450000,'n',null,'o',SB+'240614542'],
+ ['kommunarka','Расходные материалы для иммуностейнеров Dartmon, лот 1',M,'котировки','2026-07-09',2022726,'n',null,'o',SB+'245271240'],
+ ['kommunarka','Бортезомиб',L,'котировки','2026-07-09',1704105.20,'n',null,'o',SB+'245295512'],
+ ['kommunarka','Ремонт оконных и дверных блоков, козырька',U,'аукцион','2026-07-06',1445981.28,'n',null,'o',SB+'245095255'],
+ ['kommunarka','Противопожарные двери',H,'не указан','2026-04-27',285000,'a','ООО «ДОРАС ГРУПП»','a',BF+'-gosplan_ru-cc18052b79aae7b4'],
+ ['b52','Амфотерицин B (липидный комплекс), закупка № 95633834',L,'не указан','2026-10-13',73950000,'n',null,'o',RT52],
+ ['b52','Пиперациллин + тазобактам, № 95583152',L,'не указан','2026-10-12',28048160,'n',null,'o',RT52],
+ ['b52','Колонки абсорбционные для системы гемоперфузии, № 95569729',M,'не указан','2026-10-09',21767845,'n',null,'o',RT52],
+ ['b52','Абатацепт, № 95556404',L,'не указан','2026-10-09',14334440,'n',null,'o',RT52],
+ ['b52','Реагенты для коагулометров ACL TOP, лот 3, № 95574260',M,'не указан','2026-10-09',12290200,'n',null,'o',RT52],
+ ['b52','Натрия хлорид, № 95554488',L,'не указан','2026-10-09',9001080,'n',null,'o',RT52],
+ ['b52','Ампициллин + сульбактам, № 95583147',L,'не указан','2026-10-12',8131440,'n',null,'o',RT52],
+ ['b52','Расходные материалы для шприцевых насосов, № 95558251',M,'не указан','2026-10-09',6466500,'n',null,'o',RT52],
+ ['b52','Реагенты ИФА для аутоиммунной диагностики, лот 3',M,'аукцион','2026-07-01',1745408,'n',null,'o',SB+'244873239'],
+ ['b52','Программа «Актион 360: охрана труда», № 95560522',U,'не указан','2026-10-09',1495000,'n',null,'o',RT52],
+ ['yudin','Пертузумаб для пациентов со злокачественными новообразованиями на 2027 год',L,'аукцион','2026-08-05',249288181.80,'n',null,'o',SB+'246703143'],
+ ['yudin','Полимиксин B, № 95509606',L,'не указан','2026-10-07',54764375,'n',null,'o',RTY],
+ ['yudin','Фосфомицин, № 95566018',L,'не указан','2026-10-09',30778500,'n',null,'o',RTY],
+ ['yudin','Очистка кровли от снега и наледи, № 95438616',U,'не указан','2026-10-05',29289157,'n',null,'o',RTY],
+ ['yudin','Текущий ремонт ОРИТ № 3, № 95554003',U,'не указан','2026-10-09',24673592,'n',null,'o',RTY],
+ ['yudin','Амоксициллин + сульбактам, № 95499372',L,'не указан','2026-10-07',21450000,'n',null,'o',RTY],
+ ['yudin','Расходные материалы для нейрохирургии (кейджи)',M,'аукцион','2026-06-01',2794509.90,'n',null,'o',SB+'244785802'],
+ ['morozov','Аспарагиназа, № 95630407',L,'не указан','2026-10-13',38498625,'n',null,'o',RTM],
+ ['morozov','Пакеты для медицинских отходов, № 95657935',H,'не указан','2026-10-14',19900000,'n',null,'o',RTM],
+ ['morozov','Тиосульфат натрия, № 95630409',L,'не указан','2026-10-13',12460800,'n',null,'o',RTM],
+ ['morozov','Белумосудил, № 95666634',L,'не указан','2026-10-14',3706560,'n',null,'o',RTM],
+ ['morozov','Наконечник плазменного коагулятора (урология)',M,'аукцион','2026-05-14',982666.70,'a','ООО «АЙ ЭМ ЭС ЭКВИПМЕНТ»','a',BF+'-gosplan_ru-9e432d777cbb5bf9'],
+ ['morozov','Расходные материалы для отделения трансфузиологии',M,'аукцион','2026-05-14',614419.92,'a','ООО «ЛАБКОР»','a',BF+'-gosplan_ru-6ac9aae2edba6ddd'],
+ ['veresaev','Йопамидол, повторная закупка',L,'аукцион','2026-05-12',11718054,'a','ООО «МЕДТОРГ ФАРМА»','a',BF+'-2026-gosplan_ru-4debd49dfa192e02'],
+ ['veresaev','Растворы для гемофильтрации',L,'аукцион','2026-05-25',11249975,'a','ООО «МЕДТОРГ ФАРМА»','a',BF+'-2026-gosplan_ru-50409cd6bc51f1b3'],
+ ['veresaev','Содержание и уборка помещений',U,'аукцион','2026-05-04',10409458,'a','ИНН 222105341000','a',BF+'-127247-800-22-125414-26-gosplan_ru-00a7e880c8db6373'],
+ ['veresaev','Набор хирургических инструментов для торакоскопии (кардиохирургия), 2026–2027',M,'аукцион','2026-05-17',5823749,'a','ООО «АРИАДНА»','a',BF+'-2026-2027-gosplan_ru-73ab6037372ecee2'],
+ ['veresaev','Расходные материалы для рентгенохирургии (ВМП)',M,'аукцион','2026-05-17',2077773,'a','ООО «МЕДЧЕНЕЛ»','a',BF+'-2026-gosplan_ru-3dd782eebd343aee'],
+ ['veresaev','Внутриматочные катетеры для введения контраста',M,'котировки','2026-05-17',1671634,'a','ИНН 081409140553','a',BF+'-2026-2027-gosplan_ru-169dab65fc03f56f'],
+ ['veresaev','Инструменты на 2026–2027 годы',M,'котировки','2026-05-02',629596,'a','ООО «МЕДЦЕНТР НН»','a',BF+'-2026-2027-gosplan_ru-d521a42290861b2d'],
+ ['loginov','Перчатки хирургические латексные (этап 16)',M,'аукцион','2026-08-05',14000000,'n',null,'o',SB+'246713622'],
+ ['loginov','Колонка для гемоперфузии (этап 67, расходники для реанимации)',M,'котировки','2026-06-01',2995000,'n',null,'o',SB+'242923268'],
+ ['loginov','Фильтр для афереза (этап 76, расходники для реанимации)',M,'котировки','2026-07-09',2995000,'n',null,'o',SB+'245262446'],
+ ['loginov','Аппарат для измерения артериального давления портативный',M,'не указан','2026-06-03',2190500,'a','ООО «АРТМЕД»','a',BF+'-gosplan_ru-2c19ff04af8d0023'],
+ ['loginov','Расходные материалы для оперблока LigaSure (этап 86)',M,'аукцион','2026-09-02',1499999,'n',null,'o',SB+'248269385'],
+ ['gkb15','Стенты периферические для сосудистой хирургии',M,'аукцион','2026-08-06',19965281.31,'n',null,'o',SB+'246790041'],
+ ['gkb15','Клинки ларингоскопа одноразовые для оперблока',M,'аукцион','2026-07-09',2999358.96,'n',null,'o',SB+'245295624'],
+ ['gkb15','Пропофол',L,'котировки','2026-09-02',2997920,'n',null,'o',SB+'248286156'],
+ ['gkb15','Расходные материалы для гемодиализа',M,'не указан','2026-05-18',2997441,'a','ИНН 771370315508','a',BF+'-gosplan_ru-70b8a73ccb9fc926'],
+ ['gkb15','Расходные материалы для офтальмологии',M,'не указан','2026-04-27',2973191,'a','ИНН 773371987577','a',BF+'-gosplan_ru-bd2b080e2d668f69'],
+ ['mnpcli','Реагенты для анализаторов ACL (факторы свёртывания)',M,'аукцион','2026-05-19',70928607,'a','ООО «ЭПИДБИОМЕД-ДИАГНОСТИКА»','a',BF+'acl-gosplan_ru-2e81c939c4e2fddc'],
+ ['mnpcli','Реагенты для анализаторов Immulite',M,'аукцион','2026-05-13',25440828,'a','ООО «ЛАБДИАЛОГ»','a',BF+'immulite-gosplan_ru-35af4af4e702a082'],
+ ['mnpcli','Анализатор мочи автоматический',O,'аукцион','2026-04-27',23200000,'a','ООО «МЕДТОРГ»','a',BF+'-gosplan_ru-89094e8bc6bb56df'],
+ ['mnpcli','Промывающий раствор для мочевого анализатора',M,'аукцион','2026-05-19',10398900,'a','ООО «МЕДТОРГ»','a',BF+'-gosplan_ru-fa012d1cd1c67c85'],
+ ['mnpcli','Импульсная ксеноновая УФ-установка для обеззараживания воздуха',O,'аукцион','2026-05-13',8560000,'a','ООО «НПП «МЕЛИТТА»','a',BF+'-gosplan_ru-36fd78516f1b86de'],
+ ['mnpcli','Комплектующие для информационных систем',H,'аукцион','2026-04-29',7355898,'a','ИНН 380100762749','a',BF+'-gosplan_ru-9bdddbb3651b8744'],
+ ['mnpcli','Устройство для подготовки и окрашивания препаратов на предметном стекле',O,'аукцион','2026-05-20',6576426,'a','АО «ОРИОН МЕДИК»','a',BF+'-gosplan_ru-242270c939a62fee'],
+ ['mnpcli','Ручки-скарификаторы автоматические',M,'аукцион','2026-05-20',2375150,'a','ИНН 352825816234','a',BF+'-gosplan_ru-c417a76f13e466fb'],
+ ['inozem','Наконечники для оперблока',M,'аукцион','2026-06-05',9447250,'a','ООО «ТУРМОДА»','a',BF+'-gosplan_ru-8733ff5db9321603'],
+ ['inozem','Кабели и электроды для нейромониторинга',M,'аукцион','2026-06-05',3596940,'a','ИНН 616301138856','a',BF+'-gosplan_ru-2995772483b3e1ff'],
+ ['inozem','Информационные табло',H,'аукцион','2026-04-27',2542333,'a','ИНН 370206762799','a',BF+'-gosplan_ru-bc5465f784a90e87'],
+ ['konch','Контур дыхательный для ИВЛ',M,'аукцион','2026-06-08',14296491,'a','ИНН 616301138856','a',BF+'-gosplan_ru-d3a313b78aa4f95d'],
+ ['konch','Частицы для эмболизации',M,'котировки','2026-05-07',2980928,'a','ИНН 5036098408','a',BF+'-gosplan_ru-f42c57939992f38b'],
+ ['konch','Инсулин-изофан, повторная закупка № 2',L,'котировки','2026-05-25',364485,'a','ООО «БАРИОН»','a',BF+'-2-gosplan_ru-ea9b41bd79c53eda'],
+ ['demikhov','Реагенты для анализаторов Maglumi, лот 1',M,'аукцион','2026-05-28',2398320,'n',null,'o',SB+'242720445'],
+ ['demikhov','Набор ирригационных трубок',M,'аукцион','2026-05-28',1803900,'n',null,'o',SB+'242720378'],
+ ['demikhov','Реагенты для биохимических анализаторов Beckman AU480, лот 17 (извещение 0373200100126000641)',M,'аукцион','2026-05-14',1040308.78,'n',null,'r','https://www.bicotender.ru/medicina-farmakologiia/postavka-reagentov-i-rasxodnyx-materialov-dlia-analizatorov-bioximiceskix-avtomatizirovannyx-g-moskva-tender329637776.html'],
+ ['dgkbfil','Реагенты для коагулометра ACL',M,'аукцион','2026-06-01',1500000,'a','ООО «ЛАБГАРАНТ»','a',BF+'acl-gosplan_ru-6a91af29b7a4bb04'],
+ ['dgkbfil','Лекарственные средства',L,'не указан','2026-06-05',991173,'a','ИНН 7726476258','a',BF+'-gosplan_ru-8cd949abffdeccf4'],
+ ['dgkbfil','Тепловлагообменник-фильтр для торакальной хирургии (ОМС 2026)',M,'аукцион','2026-07-07',285920,'n',null,'o',SB+'245166840'],
+ ['bashl','Лекарственные препараты (оксибупрокаин, офлоксацин и др.), повторная закупка',L,'аукцион','2026-05-28',40377.20,'n',null,'o',SB+'242661986'],
+ ['vlad','Передвижная цифровая рентгеноскопическая система',O,'аукцион','2026-07-28',10826667,'a','ООО «ИНТЕРМЕД»','a',BF+'-04558-gosplan_ru-e1b9cc875f64160a'],
+ ['mgob62','Наборы реагентов для ПЦР (микросателлитная нестабильность)',M,'котировки','2026-05-28',546000,'n',null,'o',SB+'242698439'],
+ ['mgob62','Реагенты и расходные материалы PATHFAST, лот 2',M,'котировки','2026-08-06',193389,'n',null,'o',SB+'246779788'],
+ ['gormed','Стаканы пластиковые одноразовые (лот 117309-А26, для СМП)',H,'аукцион','2026-07-09',584790,'n',null,'o',SB+'245289653'],
+ ['gormed','Ремонт медицинского оборудования',U,'котировки','2026-07-09',103042.70,'n',null,'o',SB+'245285227'],
+ ['blood','Ремонт входной группы, ул. Поликарпова, 14/1',U,'аукцион','2026-05-27',1109626.08,'n',null,'o',SB+'242604287'],
+ ['mrvsm','Расходные материалы для гематологического анализатора BC-6800Plus, лот 3',M,'аукцион','2026-06-29',1346780,'n',null,'o',SB+'244639375'],
+ ['kdc6','Расходные материалы для функциональной диагностики',M,'аукцион','2026-05-19',1472974,'a','ООО «ВИП СТАЙЛ»','a',BF+'no-6-gosplan_ru-f44022f870051e9d'],
+ ['sp48','Стоматологический расходный материал для платных медицинских услуг',M,'не указан','2026-04-30',2997326,'n',null,'a',BF+'-no48-2026-gosplan_ru-e3742128505f04b3'],
+ ['dgp52','Средства дезинфицирующие',H,'аукцион','2026-05-10',1261857,'a','ИНН 745305105604','a',BF+'no-52-gosplan_ru-37da64abda53a32f'],
+ ['joint','Совместный конкурс: частная охрана объектов здравоохранения Москвы на 2026–2027 годы (заказ 7)',U,'конкурс','2026-05-12',32947972,'a','ИНН 7706143317','a',BF+'2026-2027-7-gosplan_ru-c18be4ca5f90ea5a']
+];
+const RECS=RAW.map((a,i)=>({i,c:a[0],s:a[1],cat:a[2],p:a[3],d:a[4],r:a[5],k:a[6],w:a[7],st:a[8],u:a[9]}));
+
+
+/* ---------- Основа ---------- */
+const winCust={};RECS.forEach(r=>{if(r.w)(winCust[r.w]=winCust[r.w]||new Set()).add(r.c);});
+const MULTI=new Set(Object.keys(winCust).filter(w=>winCust[w].size>1));
+const FLAGS={
+ threshold:{label:'У порога 3 млн ₽',short:'Порог 3 млн',test:r=>r.r>=2.9e6&&r.r<3e6,desc:'Цена 2,9–3,0 млн ₽ — у верхней границы электронного запроса котировок по общему правилу 44-ФЗ. Кластер цен у порога — классический признак дробления закупки.'},
+ brand:{label:'Привязка к модели',short:'Марка',test:r=>/ACL|Immulite|Maglumi|Beckman|DAKO|Dymind|Dartmon|PATHFAST|BC-6800|LigaSure/i.test(r.s),desc:'В предмете названа модель анализатора или аппарата. Оправдано совместимостью, но сужает круг поставщиков.'},
+ repeat:{label:'Повторная закупка',short:'Повтор',test:r=>/повтор/i.test(r.s),desc:'Предыдущая процедура не состоялась: не было заявок или все отклонены.'},
+ big:{label:'Лот от 50 млн ₽',short:'≥ 50 млн',test:r=>r.r>=5e7,desc:'Крупный лот отсекает малый бизнес и делает срыв поставки дороже.'},
+ nonmed:{label:'Немедицинский предмет',short:'Немед.',test:r=>r.cat===U||r.cat===H,desc:'Работы, услуги или хозтовары в медицинском бюджете; цену сложнее сравнить с рынком.'},
+ multi:{label:'Победитель у нескольких заказчиков',short:'Общий победитель',test:r=>!!r.w&&MULTI.has(r.w),desc:'Один поставщик выиграл у разных учреждений выборки. Нормально само по себе, но вместе с другими сигналами — повод проверить связи.'}
+};
+const FK=Object.keys(FLAGS);
+function flagsOf(r){return FK.filter(k=>FLAGS[k].test(r));}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+const nf1=new Intl.NumberFormat('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1});
+const nf0=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0});
+function money(x){if(x==null)return '—';const a=Math.abs(x);if(a>=1e9)return nf1.format(x/1e9)+' млрд ₽';if(a>=1e6)return nf1.format(x/1e6)+' млн ₽';if(a>=1e3)return nf0.format(x/1e3)+' тыс. ₽';return nf0.format(x)+' ₽';}
+function full(x){return x.toLocaleString('ru-RU',{minimumFractionDigits:x%1?2:0,maximumFractionDigits:2})+' ₽';}
+function dt(s){const p=s.split('-');return p[2]+'.'+p[1]+'.'+p[0];}
+const MN=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const MS=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+const mName=m=>MN[+m.slice(5)-1];const mShort=m=>MS[+m.slice(5)-1];
+const KIND={n:'НМЦК',a:'Итог'};
+const STATUS={a:'Определён поставщик',o:'Приём заявок',r:'Итоги без суммы'};
+const STPILL={a:'ok',o:'info',r:'mut'};
+function stPill(st){return `<span class="pill ${STPILL[st]}">${STATUS[st]}</span>`;}
+function srcName(u){if(u.includes('bidsfactory'))return 'BidsFactory';if(u.includes('saby'))return 'Saby';if(u.includes('rostender'))return 'Ростендер';if(u.includes('bicotender'))return 'Бикотендер';return 'Источник';}
+function plural(n,a,b,c){const m10=n%10,m100=n%100;if(m10===1&&m100!==11)return a;if(m10>=2&&m10<=4&&(m100<12||m100>14))return b;return c;}
+const proc=n=>n+' '+plural(n,'процедура','процедуры','процедур');
+function stats(rs){const sum=rs.reduce((s,r)=>s+r.r,0);const so=rs.map(r=>r.r).sort((a,b)=>a-b);const med=so.length?(so.length%2?so[(so.length-1)/2]:(so[so.length/2-1]+so[so.length/2])/2):0;const max=rs.reduce((m,r)=>!m||r.r>m.r?r:m,null);const ds=rs.map(r=>r.d).sort();return {n:rs.length,sum,med,max,first:ds[0],last:ds[ds.length-1]};}
+function byCat(rs,m){const o={};CATS.forEach(c=>o[c]={n:0,s:0});rs.forEach(r=>{o[r.cat].n++;o[r.cat].s+=r.r;});return CATS.map(c=>({cat:c,n:o[c].n,s:o[c].s,v:m==='cnt'?o[c].n:o[c].s}));}
+const byDateDesc=(a,b)=>b.d.localeCompare(a.d)||b.r-a.r;
+const months=[...new Set(RECS.map(r=>r.d.slice(0,7)))].sort();
+const TOTAL=stats(RECS);
+const FLAGGED=RECS.filter(r=>flagsOf(r).length);
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mqMobile=window.matchMedia('(max-width: 640px)');
+
+/* ---------- Подсказки ---------- */
+const tip=$('#tip');let lastPT='mouse';
+function placeTip(x,y){const w=tip.offsetWidth,h=tip.offsetHeight;let lx=x+14,ty=y-h-12;if(lx+w>innerWidth-8)lx=x-w-14;if(lx<8)lx=8;if(ty<8)ty=y+18;tip.style.left=lx+'px';tip.style.top=ty+'px';}
+document.addEventListener('pointerdown',e=>{lastPT=e.pointerType||'mouse';},true);
+document.addEventListener('pointerover',e=>{if(e.pointerType==='touch'){tip.hidden=true;return;}const t=e.target.closest('[data-tip]');if(!t){tip.hidden=true;return;}tip.textContent=t.dataset.tip;tip.hidden=false;placeTip(e.clientX,e.clientY);});
+document.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;if(!tip.hidden)placeTip(e.clientX,e.clientY);});
+document.addEventListener('focusin',e=>{if(lastPT==='touch'){tip.hidden=true;return;}const t=e.target.closest&&e.target.closest('[data-tip]');if(t){const b=t.getBoundingClientRect();tip.textContent=t.dataset.tip;tip.hidden=false;placeTip(b.left+b.width/2,b.top);}else tip.hidden=true;});
+addEventListener('scroll',()=>{tip.hidden=true;},{passive:true});
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>{t.hidden=true;},2600);}
+
+/* Горизонтальные столбцы: attrs делает строку кликабельной */
+function hbars(el,items,fmt,max){max=max||Math.max(...items.map(i=>i.v),1);
+ el.innerHTML=items.map(i=>{const pct=i.v?Math.max(1.2,i.v/max*100):0;const tag=i.attrs?'button':'div';
+  return `<${tag} class="hb"${i.attrs?' type="button" '+i.attrs:''} data-tip="${esc(i.tip||(i.l+': '+fmt(i.v)))}"><span class="hb-top"><span class="lab">${i.dot?`<i class="catdot" style="background:${i.dot}"></i>`:''}${esc(i.l)}</span><span class="val">${fmt(i.v)}</span></span><span class="track"><span class="fill${i.cls?' '+i.cls:''}" style="width:${pct}%"></span></span>${i.hint?`<span class="hint">${esc(i.hint)}</span>`:''}</${tag}>`;}).join('');}
+
+/* ---------- Справочные факты для кликабельных графиков ---------- */
+const U1={m24:'https://www.m24.ru/news/01112025/843458',ifx:'https://www.interfax.ru/moscow/1052772',mos150:'https://www.mos.ru/news/item/161224073/',gxpDrug:'https://gxpnews.net/2025/10/byudzhet-moskvy-na-zakupku-lekarstv-v-2026-godu-prevysit-66-mlrd-rublej/',gar24:'https://www.garant.ru/hotlaw/moscow/1828310/',mgf:'https://www.mgfoms.ru/news/smi-o-nas/na-zasedanii-moskovskoy-gorodskoy-dumy-01-11-2025-podderzhan-proekt-zakona-goroda-moskvy-o-byudzhete/',vac:'https://gxpnews.net/2026/07/analitiki-goszakupki-vakczin-v-rossii-vyrosli-vtroe-za-polgoda/',vac25:'https://gxpnews.net/2026/09/rynok-vakczin-perezagruzhaetsya-regiony-protiv-czentra/',por25:'https://finance.mail.ru/article/meduslugi-stali-samoy-vostrebovannoy-kategoriey-sdelok-na-portale-postavschikov-66576078/',por26:'https://rg.ru/2026/06/23/medicinskie-tovary-voshli-v-trojku-samyh-populiarnyh-kategorij-zakupok-na-portale-postavshchikov.html',fas:'https://www.interfax.ru/business/1107611',pravo:'https://pravo.ru/news/265151/amp/',hw:'https://gxpnews.net/2026/04/postavki-lekarstv-v-rossijskie-meduchrezhdeniya-vyrosli-na-131-s-nachala-goda/',cur:'https://gxpnews.net/2026/05/goszakupki-lekarstv-v-rossii-vyrosli-na-36-s-nachala-god/',econ:'https://www.mos.ru/news/item/165394073/',nmck:'https://www.m24.ru/news/10072026/918709',kot:'https://investfuture.ru/articles/chislo-kotirovochnykh-sessiy-na-portale-postavschikov-vyroslo-37328652',kom:'https://www.kommersant.ru/doc/8861466',ppt736:'https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-12-06-2026-736',law:'https://pharmvestnik.ru/content/news/gosduma-rf-prinyala-zakonoproekt-ob-uproshenii-sistemy-goszakupok-po-44-fz.html',ppt969:'https://ppt.ru/art/naczionalnyj-rezhim/natsrezhim-i-preimushchestva-dlya-stran-iz-yeaes-chto-menyaetsya',ppt1236:'https://ppt.ru/obzory/vstupaet-v-silu/postanovlenie-pravitelstva-rf-25-09-2026-1236',vl:'https://gxpnews.net/2026/06/pravitelstvo-sdvinulo-zapusk-vtorogo-lishnego-dlya-szls-posle-obrashheniya-biznesa/',vl1:'https://pharmvestnik.ru/content/news/start-vtorogo-lishnego-dlya-preparatov-iz-perechnya-szls-snova-perenesli.html',ofs:'https://www.mos.ru/news/item/161243073/',ofs2:'https://rg.ru/2026/07/28/reg-cfo/ot-molekuly-do-tabletki.html',rob:'https://www.comnews.ru/content/243979/2026-02-25/2026-w09/1009/sobyanin-rasskazal-ob-ispolzovanii-robotov-bolnicakh-moskvy',ai:'https://www.mos.ru/news/item/166355073',inc:'https://incrussia.ru/news/strojka-prosela-it-pribavil-kak-izmenilsya-goszakaz-za-polgoda/',fail:'https://pharmvestnik.ru/content/news/nesostoyavshihsya-torgov-v-goszakupkah-stalo-menshe.html',cart:'https://ppt.ru/columns/cartelization/161-delo-pochti-5-tysyach-zakupok-i-20-3-mlrd-rubley-shtrafov-fas-podvela-itogi-pervogo-polugodiya',cart277:'https://pharmvestnik.ru/content/news/fas-rossii-vyyavila-kartel-pri-postavke-medizdelii-na-277-mln-rublei.html',cart949:'https://finance.mail.ru/article/fas-vyyavila-medicinskiy-kartel-na-949-mln-rubley-67689020/',sp:'https://gxpnews.net/2026/03/schetnaya-palata-vyyavila-narusheniya-v-zdravoohranenii-na-289-mlrd-rublej/',def:'https://gxpnews.net/2026/05/bolee-900-sluchaev-deficzita-lekarstv-vyyavili-v-rossii-v-2020-2025-godah/',brace:'https://brace-lf.com/ru/informaciya/farmatsevticheskoe-i-meditsinskoe-pravo/spory-zakupki-medizdeliya-praktika-fas-sud',ufas:'https://profas.expert/doc/bgfegadgf37a',gorm:'https://www.garant.ru/subscribe/mos/20260504/',aif:'https://aif.ru/moscow/200-tys-kontraktov-s-regionami-sobyanin-podvel-itogi-goszakupok-moskvy'};
+/* [ключ, группа, заголовок, значение, пояснение, источник, ссылка] */
+const FACTS={};
+[
+ ['fund1','Финансирование 2026','Бюджет Москвы на здравоохранение','615 млрд ₽','Расходы городского бюджета на здравоохранение в 2026 году. С учётом средств ОМС — более 1 трлн ₽.','m24.ru, 01.11.2025',U1.m24],
+ ['fund2','Финансирование 2026','Бюджет МГФОМС (ОМС)','529,6 млрд ₽','Расходы фонда ОМС на 2026 год; на 2027 год — около 595 млрд ₽, на 2028 год — около 636,3 млрд ₽.','Интерфакс, 15.10.2025',U1.ifx],
+ ['fund3','Финансирование 2026','Строительство, ремонт и оборудование','150 млрд ₽','Материальная база здравоохранения в 2026 году; 16 млрд ₽ — средства инвесторов. На 2026–2028 годы запланировано 52 медобъекта.','mos.ru, 22.10.2025',U1.mos150],
+ ['fund4','Финансирование 2026','Лекарственное обеспечение льготников','66+ млрд ₽','Бесплатные и льготные лекарства, медизделия и лечебное питание. В 2025 году — около 62 млрд ₽. Аукционы проводит Агентство по закупкам ДЗМ.','GxP News, 17.10.2025',U1.gxpDrug],
+ ['om24','Бюджет МГФОМС','2024 · исполнение','442,3 млрд ₽','Фактические расходы фонда ОМС за 2024 год; доходы — 437,3 млрд ₽.','Гарант, 02.07.2025',U1.gar24],
+ ['om25','Бюджет МГФОМС','2025','н/д','Расходы за 2025 год в открытых источниках не найдены. Доходы фонда — 498,8 млрд ₽, +14,1% к 2024 году.','МГФОМС, 10.06.2026',U1.mgf],
+ ['om26','Бюджет МГФОМС','2026 · план','529,6 млрд ₽','Расходы по закону о бюджете фонда; +20% к исполнению 2024 года.','Интерфакс, 15.10.2025',U1.ifx],
+ ['om27','Бюджет МГФОМС','2027 · план','≈595 млрд ₽','Плановые расходы фонда ОМС.','Интерфакс, 15.10.2025',U1.ifx],
+ ['om28','Бюджет МГФОМС','2028 · план','≈636,3 млрд ₽','Плановые расходы фонда ОМС.','Интерфакс, 15.10.2025',U1.ifx],
+ ['vac1','Вакцины, I полугодие 2026','Москва','28,54 млрд ₽','77% всех госзакупок вакцин России (36,96 млрд ₽). По стране 72% объёма — федеральная программа вакцинопрофилактики, поэтому цифра, вероятно, включает федеральные закупки. За весь 2025 год — 22,7 млрд ₽.','Headway / GxP News, 21.07.2026',U1.vac],
+ ['vac2','Вакцины, I полугодие 2026','Санкт-Петербург','0,73 млрд ₽','Второй регион по объёму закупок вакцин.','Headway / GxP News',U1.vac],
+ ['vac3','Вакцины, I полугодие 2026','Новосибирская область','0,58 млрд ₽','Третий регион по объёму.','Headway / GxP News',U1.vac],
+ ['vac4','Вакцины, I полугодие 2026','Московская область','0,52 млрд ₽','Четвёртый регион по объёму.','Headway / GxP News',U1.vac],
+ ['por1','Портал поставщиков','Медтовары · январь–май 2025','7,4 тыс. контрактов','На 936,1 млн ₽.','mail.ru, 15.06.2025',U1.por25],
+ ['por2','Портал поставщиков','Медтовары · январь–май 2026','7,7 тыс. контрактов','Медтовары — в тройке категорий-лидеров Портала; чаще всего закупали инструменты, инъекционные изделия и диагностические реагенты.','РГ, 23.06.2026',U1.por26],
+ ['por3','Портал поставщиков','Медуслуги · январь–май 2025','1,3 тыс. контрактов','На 152,5 млн ₽.','mail.ru, 15.06.2025',U1.por25],
+ ['por4','Портал поставщиков','Медуслуги · январь–май 2026','3,4 тыс. контрактов','Рост в 2,6 раза к январю–маю 2025 года.','РГ, 23.06.2026',U1.por26],
+ ['fas1','ФАС, I полугодие 2026','Жалоб поступило','26 270','+2,4% к I полугодию 2025 года; все отрасли.','Интерфакс, 05.08.2026',U1.fas],
+ ['fas2','ФАС, I полугодие 2026','Рассмотрено','21 653','Жалобы, по которым ФАС приняла решение.','Право.ру, 05.08.2026',U1.pravo],
+ ['fas3','ФАС, I полугодие 2026','Признаны обоснованными','7 373','Около 34% рассмотренных; доля обоснованных снизилась на 7,6%.','Право.ру, 05.08.2026',U1.pravo],
+ ['fas4','ФАС, I полугодие 2026','Выдано предписаний','6 892','Предписания об устранении нарушений.','Интерфакс, 05.08.2026',U1.fas],
+ ['fas5','ФАС, I полугодие 2026','Записей в РНП','6 914','Реестр недобросовестных поставщиков; 83,1% — из-за расторжения контракта.','Интерфакс, 05.08.2026',U1.fas],
+ ['sup1','Лидеры поставок лекарств','Р-Фарм','24,3 млрд ₽','18% госпитальных поставок лекарств в России за I квартал 2026 года. Партнёр Москвы по трём офсетным контрактам.','Headway / GxP News, 30.04.2026',U1.hw],
+ ['sup2','Лидеры поставок лекарств','Ирвин 2','22,4 млрд ₽','16% госпитальных поставок.','Headway / GxP News',U1.hw],
+ ['sup3','Лидеры поставок лекарств','Фармстандарт','17,7 млрд ₽','13% госпитальных поставок; за январь–апрель по данным «Курсора» — лидер с 40,1 млрд ₽.','Headway, Курсор / GxP News',U1.cur]
+].forEach(a=>{FACTS[a[0]]={g:a[1],t:a[2],v:a[3],d:a[4],s:a[5],u:a[6]};});
+const factList=g=>Object.keys(FACTS).filter(k=>FACTS[k].g===g);
+
+/* ---------- Вкладки и навигация ---------- */
+const TABS=[['overview','Обзор','ключевые цифры и графики'],['customers','Заказчики','карта объёмов, топ-15, группы'],['registry','Реестр','100 закупок с фильтрами'],['risks','Риски','сигналы и тепловая карта'],['stats','Статистика','ОМС, вакцины, портал, ФАС'],['trends','Тенденции','тренды, хронология, поставщики'],['sources','Источники','методика и ссылки']];
+const BADGE={customers:15,registry:RECS.length,risks:FLAGGED.length};
+let curTab='overview',menuOpen=false;
+$('#tabs').innerHTML=TABS.map(([id,t])=>`<button type="button" class="tab-btn" role="tab" id="tb-${id}" aria-controls="${id}" aria-selected="false" data-tab="${id}">${t}${BADGE[id]?`<span class="bdg">${BADGE[id]}</span>`:''}</button>`).join('');
+const secmenu=$('#secmenu');
+secmenu.innerHTML='<ol>'+TABS.map((x,i)=>`<li><button type="button" data-tab="${x[0]}"><span class="sn">${i+1}</span><span class="stt">${esc(x[1])}</span><span class="sgo" aria-hidden="true">→</span><span class="sd">${esc(x[2])}</span></button></li>`).join('')+'</ol>';
+function showTab(id,opt){opt=opt||{};const i=TABS.findIndex(t=>t[0]===id);if(i<0)return;curTab=id;
+ TABS.forEach(([t])=>{document.getElementById(t).hidden=t!==id;});
+ document.querySelectorAll('.tab-btn').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===id?'true':'false'));
+ secmenu.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===id?'true':'false'));
+ $('#mno').textContent=(i+1)+' / '+TABS.length;$('#mname').textContent=TABS[i][1];$('#mprev').disabled=i===0;$('#mnext').disabled=i===TABS.length-1;
+ const tb=$('#tb-'+id),tc=$('#tabs');if(tb&&tc.scrollWidth>tc.clientWidth)tc.scrollTo({left:tb.offsetLeft-(tc.clientWidth-tb.offsetWidth)/2,behavior:reduce?'auto':'smooth'});
+ if(id==='customers')renderTreemap();
+ const sec=document.getElementById(id);sec.classList.remove('in-l','in-r');
+ if(opt.anim&&!reduce){void sec.offsetWidth;sec.classList.add(opt.anim>0?'in-l':'in-r');}
+ if(opt.scroll!==false){const y=$('#main').getBoundingClientRect().top+scrollY-$('.tabsbar').offsetHeight-4;if(scrollY>y)window.scrollTo({top:y,behavior:'auto'});}
+ if(!opt.initial){try{history.replaceState(null,'','#'+id);}catch(e){}}}
+function stepTab(d){const i=TABS.findIndex(t=>t[0]===curTab)+d;if(i<0||i>=TABS.length)return;showTab(TABS[i][0],{anim:d});}
+function openMenu(){if(menuOpen)return;menuOpen=true;secmenu.hidden=false;document.body.classList.add('menu-open','locked');scrim.hidden=false;$('#mcur').setAttribute('aria-expanded','true');tip.hidden=true;(secmenu.querySelector('[aria-current="true"]')||secmenu.querySelector('button')).focus({preventScroll:true});}
+function closeMenu(silent){if(!menuOpen)return;menuOpen=false;secmenu.hidden=true;document.body.classList.remove('menu-open');$('#mcur').setAttribute('aria-expanded','false');if(drawer.hidden){scrim.hidden=true;document.body.classList.remove('locked');}if(!silent)$('#mcur').focus({preventScroll:true});}
+$('#mcur').addEventListener('click',()=>{menuOpen?closeMenu():openMenu();});
+$('#mprev').addEventListener('click',()=>stepTab(-1));
+$('#mnext').addEventListener('click',()=>stepTab(1));
+$('#tabs').addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;e.preventDefault();stepTab(e.key==='ArrowRight'?1:-1);const b=$('#tb-'+curTab);if(b)b.focus();});
+/* Свайп по содержимому на телефоне — соседняя вкладка */
+(function(){let x0=0,y0=0,t0=0,ok=false;const main=$('#main');
+ main.addEventListener('touchstart',e=>{const t=e.touches[0];x0=t.clientX;y0=t.clientY;t0=Date.now();ok=!e.target.closest('.tbox,.tmap,input,select,textarea,.scols,.hist');},{passive:true});
+ main.addEventListener('touchend',e=>{if(!ok||!mqMobile.matches)return;const t=e.changedTouches[0];const dx=t.clientX-x0,dy=t.clientY-y0;if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)*2&&Date.now()-t0<700)stepTab(dx<0?1:-1);},{passive:true});})();
+
+/* ---------- Обзор ---------- */
+(function(){const nCust=Object.keys(C).length,withRec=new Set(RECS.map(r=>r.c)).size,fs=stats(FLAGGED);
+ const K=[['Бюджет здравоохранения','615 млрд ₽','Москва, 2026 год','stats'],['Бюджет ОМС','529,6 млрд ₽','+20% к факту 2024 года','stats'],['Доля в закупках РФ','≈14%','200+ тыс. контрактов за I пол.','stats'],['Закупок в выборке',String(RECS.length),'на '+money(TOTAL.sum),'registry'],['Заказчиков',String(nCust),withRec+' с закупками 2026','customers'],['С сигналом риска',String(FLAGGED.length),nf0.format(FLAGGED.length/RECS.length*100)+'% выборки · '+money(fs.sum),'risks',1]];
+ $('#kpis').innerHTML=K.map(k=>`<button type="button" class="kpi${k[4]?' risk':''}" data-tab="${k[3]}"><span class="kl">${k[0]}</span><span class="kv">${k[1]}</span><span class="ks">${esc(k[2])}</span></button>`).join('');})();
+
+let dMeasure='sum';
+function renderDonut(){const parts=byCat(RECS,dMeasure).filter(p=>p.v>0);const tot=parts.reduce((s,p)=>s+p.v,0)||1;const R=70,CI=2*Math.PI*R;let off=0;
+ const fmtV=p=>dMeasure==='cnt'?proc(p.n):money(p.s);
+ const segs=parts.map(p=>{const len=p.v/tot*CI;const gap=parts.length>1?Math.min(2.5,len*.35):0;const s=`<circle class="dseg" r="${R}" cx="92" cy="92" fill="none" stroke="${CATCOL[p.cat]}" stroke-width="26" stroke-dasharray="${Math.max(.6,len-gap)} ${CI}" stroke-dashoffset="${-off}" data-reg="cat=${esc(p.cat)}" data-cat="${esc(p.cat)}" data-tip="${esc(p.cat)}: ${fmtV(p)} (${nf0.format(p.v/tot*100)}%)" tabindex="0" role="button" aria-label="${esc(p.cat)}, ${fmtV(p)}"></circle>`;off+=len;return s;}).join('');
+ const center=dMeasure==='cnt'?[String(TOTAL.n),'процедур']:[money(TOTAL.sum),'всего в выборке'];
+ $('#donut').innerHTML=`<svg viewBox="0 0 184 184" aria-label="Структура выборки по категориям"><circle r="${R}" cx="92" cy="92" fill="none" stroke="var(--track)" stroke-width="26"></circle><g transform="rotate(-90 92 92)">${segs}</g></svg><div class="dc"><b id="dc-v">${center[0]}</b><span id="dc-l">${center[1]}</span></div>`;
+ $('#donut-leg').innerHTML=parts.map(p=>`<button type="button" class="lg" data-reg="cat=${esc(p.cat)}" data-cat="${esc(p.cat)}"><i style="background:${CATCOL[p.cat]}"></i><span>${esc(p.cat)}</span><span class="lv">${fmtV(p)} · ${nf0.format(p.v/tot*100)}%</span></button>`).join('');
+ $('#donut-sub').textContent=`${TOTAL.n} процедур на ${money(TOTAL.sum)} · нажмите на категорию`;
+ document.querySelectorAll('[data-dm]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.dm===dMeasure?'true':'false'));
+ const setC=(v,l)=>{$('#dc-v').textContent=v;$('#dc-l').textContent=l;};
+ document.querySelectorAll('#donut [data-cat], #donut-leg [data-cat]').forEach(el=>{const p=parts.find(x=>x.cat===el.dataset.cat);
+  el.addEventListener('pointerenter',()=>setC(fmtV(p),p.cat));el.addEventListener('pointerleave',()=>setC(center[0],center[1]));el.addEventListener('focus',()=>setC(fmtV(p),p.cat));el.addEventListener('blur',()=>setC(center[0],center[1]));});}
+document.querySelectorAll('[data-dm]').forEach(b=>b.addEventListener('click',()=>{dMeasure=b.dataset.dm;renderDonut();}));
+renderDonut();
+
+(function(){const by={};months.forEach(m=>{by[m]={};CATS.forEach(c=>by[m][c]=0);});RECS.forEach(r=>by[r.d.slice(0,7)][r.cat]++);
+ const tot=m=>CATS.reduce((s,c)=>s+by[m][c],0);const max=Math.max(...months.map(tot),1);
+ $('#mcols').innerHTML=months.map(m=>`<div class="scol"><span class="sv">${tot(m)||''}</span><div class="sstack" style="height:calc((100% - 26px) * ${tot(m)/max})">${CATS.filter(c=>by[m][c]).map(c=>`<button type="button" class="sseg" style="flex:${by[m][c]};background:${CATCOL[c]}" data-reg="month=${m}&cat=${esc(c)}" data-tip="${mName(m)}: ${esc(c)} — ${by[m][c]}" aria-label="${mName(m)}, ${esc(c)}: ${by[m][c]}"></button>`).join('')}</div></div>`).join('');
+ $('#mcols-x').innerHTML=months.map(m=>`<span>${mShort(m)}</span>`).join('');})();
+
+const TOP=['az','dzm','botkin','yudin','kommunarka','morozov','sklif','b52','pirogov','clo','dkd','veresaev','loginov','gkb15','mnpcli'];
+const MAXTOT=Math.max(...TOP.map(id=>C[id].total||0));
+const volBar=id=>C[id].total?`<div class="cellbar"><span class="track"><span class="fill" style="width:${Math.max(1.2,C[id].total/MAXTOT*100)}%"></span></span><span class="num">${money(C[id].total)}</span></div>`:'<span class="muted">н/д</span>';
+$('#top5').innerHTML=TOP.slice(0,5).map((id,i)=>`<tr class="clk" data-cust="${id}" tabindex="0"><td class="rk">${i+1}</td><td class="tname"><b>${esc(C[id].short)}</b><small class="hide-sm">${esc(GROUPS[C[id].g])}</small></td><td style="min-width:150px">${volBar(id)}</td><td class="r num">${RECS.filter(r=>r.c===id).length}</td></tr>`).join('');
+hbars($('#procs'),(()=>{const o={};RECS.forEach(r=>{o[r.p]=(o[r.p]||0)+1;});return ['аукцион','котировки','конкурс','не указан'].filter(k=>o[k]).map(k=>({l:k[0].toUpperCase()+k.slice(1),v:o[k],attrs:`data-reg="proc=${k}"`,tip:`${k}: ${proc(o[k])} — открыть в реестре`}));})(),v=>String(v));
+$('#largest').innerHTML=RECS.slice().sort((a,b)=>b.r-a.r).slice(0,7).map(r=>`<tr class="clk" data-rec="${r.i}" data-list="largest" tabindex="0"><td class="subj">${esc(r.s.length>80?r.s.slice(0,78)+'…':r.s)}<small>${esc(C[r.c].short)}</small></td><td class="amt">${money(r.r)}<span class="kind">${KIND[r.k]}</span></td><td class="date hide-sm">${dt(r.d)}</td><td class="hide-sm">${stPill(r.st)}</td></tr>`).join('');
+function flagItems(){return FK.map(k=>{const n=RECS.filter(FLAGS[k].test).length;return {k,l:FLAGS[k].label,v:n,cls:'risk',attrs:`data-reg="flag=${k}"`,tip:`${FLAGS[k].label}: ${proc(n)} — открыть в реестре`};}).sort((a,b)=>b.v-a.v);}
+hbars($('#flagbars'),flagItems(),v=>String(v));
+
+/* ---------- Заказчики ---------- */
+const ORG_ORDER=[];['top','svc','hosp','sci','child','other'].forEach(g=>{Object.keys(C).filter(id=>C[id].g===g).sort((a,b)=>(C[b].total||0)-(C[a].total||0)||RECS.filter(r=>r.c===b).length-RECS.filter(r=>r.c===a).length).forEach(id=>ORG_ORDER.push(id));});
+function squarify(items,x,y,w,h){const out=[];const total=items.reduce((s,i)=>s+i.v,0);const sc=w*h/total;let rest=items.map(i=>Object.assign({},i,{a:i.v*sc}));
+ const worst=(row,len)=>{const s=row.reduce((a,b)=>a+b.a,0);const mx=Math.max(...row.map(r=>r.a)),mn=Math.min(...row.map(r=>r.a));return Math.max(len*len*mx/(s*s),(s*s)/(len*len*mn));};
+ while(rest.length){const len=Math.min(w,h);let row=[rest[0]],i=1;while(i<rest.length){const nr=row.concat(rest[i]);if(worst(nr,len)<=worst(row,len)){row=nr;i++;}else break;}
+  const s=row.reduce((a,b)=>a+b.a,0);
+  if(w>=h){const cw=s/h;let cy=y;row.forEach(r=>{const rh=r.a/cw;out.push(Object.assign({},r,{x,y:cy,w:cw,h:rh}));cy+=rh;});x+=cw;w-=cw;}
+  else{const rh=s/w;let cx=x;row.forEach(r=>{const rw=r.a/rh;out.push(Object.assign({},r,{x:cx,y,w:rw,h:rh}));cx+=rw;});y+=rh;h-=rh;}
+  rest=rest.slice(row.length);}
+ return out;}
+function renderTreemap(){const el=$('#tmap');const H=mqMobile.matches?150:46;el.style.aspectRatio='100 / '+H;
+ const items=TOP.filter(id=>C[id].total).map(id=>({id,v:C[id].total})).sort((a,b)=>b.v-a.v);const sum=items.reduce((s,i)=>s+i.v,0),max=items[0].v;
+ el.innerHTML=squarify(items,0,0,100,H).map(r=>{const c=C[r.id];const hp=r.h/H*100;const mix=Math.round(18+52*Math.sqrt(r.v/max));const cls=(r.w<7||hp<9)?' micro':((r.w<15||hp<17)?' tiny':'');
+  return `<button type="button" class="tcell${cls}" data-cust="${r.id}" style="left:calc(${r.x}% + 2px);top:calc(${r.y/H*100}% + 2px);width:calc(${r.w}% - 4px);height:calc(${hp}% - 4px);background:color-mix(in srgb,var(--accent) ${mix}%,var(--panel-2))" data-tip="${esc(c.short)}: ${money(r.v)} · ${nf1.format(r.v/sum*100)}% объёма карты" aria-label="${esc(c.short)}, ${money(r.v)}"><b>${esc(c.short)}</b><span>${money(r.v)} · ${nf0.format(r.v/sum*100)}%</span></button>`;}).join('');}
+mqMobile.addEventListener&&mqMobile.addEventListener('change',()=>{if(curTab==='customers')renderTreemap();});
+
+const TROWS=TOP.map((id,i)=>{const st=stats(RECS.filter(r=>r.c===id));return {id,rank:i+1,name:C[id].short,total:C[id].total||null,n:C[id].n||null,n26:st.n,sum26:st.n?st.sum:null,max26:st.max?st.max.r:null,maxS:st.max?st.max.s:'',last:st.last||null};});
+let tSort={k:'rank',d:1};let RANK_ORDER=TOP.slice();
+const TCOLS=[['rank','#'],['name','Заказчик'],['total','Накопленный объём'],['n','Контрактов'],['n26','Закупок 2026'],['sum26','Сумма 2026'],['max26','Крупнейшая 2026'],['last','Последняя']];
+function renderTop(){const {k,d}=tSort;const rows=TROWS.slice().sort((a,b)=>{const va=a[k],vb=b[k];if(va==null&&vb==null)return a.rank-b.rank;if(va==null)return 1;if(vb==null)return -1;if(typeof va==='string')return d*va.localeCompare(vb,'ru');return d*(va-vb)||a.rank-b.rank;});
+ RANK_ORDER=rows.map(r=>r.id);
+ $('#top-head').innerHTML='<tr>'+TCOLS.map(([key,l],i)=>`<th class="${[3,4,5].includes(i)?'r':''}${i===3||i===6?' hide-md':''}"><button class="sb" type="button" data-tsort="${key}">${l}<span class="ar">${tSort.k===key?(tSort.d>0?'↑':'↓'):''}</span></button></th>`).join('')+'</tr>';
+ $('#top-body').innerHTML=rows.map(r=>`<tr class="clk" data-cust="${r.id}" tabindex="0"><td class="rk">${r.rank}</td><td class="tname"><b>${esc(r.name)}</b><small>${esc(GROUPS[C[r.id].g])}</small></td><td style="min-width:170px">${volBar(r.id)}</td><td class="r num hide-md">${r.n?nf0.format(r.n):'—'}</td><td class="r num" data-label="2026">${r.n26}</td><td class="amt" data-label="сумма">${r.sum26?money(r.sum26):'—'}</td><td class="mx hide-md">${r.max26?`<span class="ellip">${esc(r.maxS)}</span><small>${money(r.max26)}</small>`:'—'}</td><td class="date" data-label="последняя">${r.last?dt(r.last):'—'}</td></tr>`).join('');}
+renderTop();
+
+const openGroups=new Set(['svc']);
+function renderGroups(){$('#groups').innerHTML=['top','svc','hosp','sci','child','other'].map(g=>{const ids=ORG_ORDER.filter(id=>C[id].g===g);const st=stats(RECS.filter(r=>C[r.c].g===g));const tot=ids.reduce((s,id)=>s+(C[id].total||0),0);const open=openGroups.has(g);
+ return `<tr class="clk" data-group="${g}" tabindex="0" aria-expanded="${open}"><td><span class="caret">${open?'▾':'▸'}</span><b>${esc(GROUPS[g])}</b></td><td class="r num hide-sm">${ids.length}</td><td class="r num">${st.n}</td><td class="amt">${st.n?money(st.sum):'—'}</td><td class="amt hide-sm">${tot?money(tot):'—'}</td></tr>`+
+  ids.map(id=>{const s2=stats(RECS.filter(r=>r.c===id));return `<tr class="clk" data-cust="${id}" tabindex="0"${open?'':' hidden'}><td style="padding-left:34px">${esc(C[id].short)}</td><td class="r hide-sm muted">·</td><td class="r num">${s2.n}</td><td class="amt">${s2.n?money(s2.sum):'—'}</td><td class="amt hide-sm">${C[id].total?money(C[id].total):'—'}</td></tr>`;}).join('');}).join('');}
+renderGroups();
+
+/* ---------- Реестр ---------- */
+const DEF={q:'',cust:'all',cat:'all',month:'all',flag:'all',proc:'all',st:'all',risk:'all',min:null,max:null,sort:'date-desc'};
+let S=Object.assign({},DEF),showAll=false;const PAGE=30;
+(function(){const ids=Object.keys(C).filter(id=>RECS.some(r=>r.c===id)).sort((a,b)=>C[a].short.localeCompare(C[b].short,'ru'));
+ $('#f-cust').innerHTML='<option value="all">Все заказчики</option>'+ids.map(id=>`<option value="${id}">${esc(C[id].short)}</option>`).join('');
+ $('#f-cat').innerHTML='<option value="all">Все категории</option>'+CATS.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+ $('#f-month').innerHTML='<option value="all">Все месяцы</option>'+months.map(m=>`<option value="${m}">${mName(m)}</option>`).join('');
+ $('#f-flag').innerHTML='<option value="all">Любой</option>'+FK.map(k=>`<option value="${k}">${esc(FLAGS[k].label)}</option>`).join('');
+ $('#f-proc').innerHTML='<option value="all">Любой</option>'+['аукцион','котировки','конкурс','не указан'].map(p=>`<option value="${p}">${p}</option>`).join('');})();
+function sync(){$('#f-q').value=S.q;$('#f-cust').value=S.cust;$('#f-cat').value=S.cat;$('#f-month').value=S.month;$('#f-flag').value=S.flag;$('#f-proc').value=S.proc;$('#f-sort').value=S.sort;}
+function filtered(){const q=S.q.trim().toLowerCase();const so={'date-desc':byDateDesc,'date-asc':(a,b)=>a.d.localeCompare(b.d)||b.r-a.r,'sum-desc':(a,b)=>b.r-a.r,'sum-asc':(a,b)=>a.r-b.r}[S.sort];
+ return RECS.filter(r=>{if(S.cust!=='all'&&r.c!==S.cust)return false;if(S.cat!=='all'&&r.cat!==S.cat)return false;if(S.month!=='all'&&r.d.slice(0,7)!==S.month)return false;if(S.proc!=='all'&&r.p!==S.proc)return false;if(S.st!=='all'&&r.st!==S.st)return false;
+  const f=flagsOf(r);if(S.risk==='risk'&&!f.length)return false;if(S.risk==='norm'&&f.length)return false;if(S.flag!=='all'&&!f.includes(S.flag))return false;
+  if(S.min!=null&&r.r<S.min)return false;if(S.max!=null&&r.r>=S.max)return false;
+  if(q&&!(r.s+' '+(r.w||'')+' '+C[r.c].short+' '+C[r.c].full).toLowerCase().includes(q))return false;return true;}).sort(so);}
+function renderRegistry(){const rs=filtered(),st=stats(rs);
+ const nRisk=FLAGGED.length;$('#riskchips').innerHTML=[['all','Все',RECS.length,''],['norm','Норма',RECS.length-nRisk,' g'],['risk','Риск',nRisk,' r']].map(x=>`<button type="button" class="chip${x[3]}" data-risk="${x[0]}" aria-pressed="${S.risk===x[0]}">${x[1]}<span class="c">${x[2]}</span></button>`).join('');
+ $('#rsum').innerHTML=`<div><div class="v">${st.n}</div><div class="l">${plural(st.n,'процедура','процедуры','процедур')} из ${RECS.length}</div></div><div><div class="v">${money(st.sum)}</div><div class="l">сумма</div></div><div><div class="v">${st.n?money(st.med):'—'}</div><div class="l">медиана</div></div><div><div class="v">${st.max?money(st.max.r):'—'}</div><div class="l">${st.max?esc(C[st.max.c].short):'крупнейшая'}</div></div>`;
+ const view=showAll?rs:rs.slice(0,PAGE);
+ $('#r-body').innerHTML=view.length?view.map(r=>{const fl=flagsOf(r);return `<tr class="clk" data-rec="${r.i}" data-list="registry" tabindex="0"><td class="date">${dt(r.d)}<small>${srcName(r.u)}</small></td><td>${esc(C[r.c].short)}</td><td class="subj">${esc(r.s)}${fl.length?`<div class="flags">${fl.map(f=>`<span class="flag">${esc(FLAGS[f].short)}</span>`).join('')}</div>`:''}</td><td><span style="display:inline-flex;align-items:center"><span class="catdot" style="background:${CATCOL[r.cat]}"></span>${esc(r.cat)}</span></td><td class="amt">${money(r.r)}<span class="kind">${KIND[r.k]}</span></td><td>${stPill(r.st)}</td></tr>`;}).join(''):`<tr><td colspan="6" class="empty">Ничего не найдено. Нажмите «Сбросить».</td></tr>`;
+ $('#r-more').hidden=showAll||rs.length<=PAGE;$('#r-morebtn').textContent=`Показать все ${rs.length}`;
+ $('#ar-date').textContent=S.sort==='date-desc'?'↓':S.sort==='date-asc'?'↑':'';$('#ar-sum').textContent=S.sort==='sum-desc'?'↓':S.sort==='sum-asc'?'↑':'';
+ const ch=[];if(S.cust!=='all')ch.push(['cust',C[S.cust].short]);if(S.cat!=='all')ch.push(['cat',S.cat]);if(S.month!=='all')ch.push(['month',mName(S.month)]);if(S.flag!=='all')ch.push(['flag',FLAGS[S.flag].label]);if(S.proc!=='all')ch.push(['proc',S.proc]);if(S.st!=='all')ch.push(['st',STATUS[S.st]]);if(S.min!=null||S.max!=null)ch.push(['range',nf1.format((S.min||0)/1e6)+'–'+nf1.format((S.max||0)/1e6)+' млн ₽']);if(S.q)ch.push(['q','«'+S.q+'»']);
+ $('#achips').innerHTML=ch.length?ch.map(c=>`<button type="button" class="fchip" data-clear="${c[0]}">${esc(c[1])} ×</button>`).join(''):'<span class="muted">Фильтры не заданы</span>';
+ const nf=ch.filter(c=>c[0]!=='q').length;$('#fcount').textContent=nf?' · '+nf:'';}
+[['#f-cust','cust'],['#f-cat','cat'],['#f-month','month'],['#f-flag','flag'],['#f-proc','proc'],['#f-sort','sort']].forEach(([sel,k])=>$(sel).addEventListener('change',e=>{S[k]=e.target.value;showAll=false;renderRegistry();}));
+$('#f-q').addEventListener('input',e=>{S.q=e.target.value;showAll=false;renderRegistry();});
+$('#r-reset').addEventListener('click',()=>{S=Object.assign({},DEF);showAll=false;sync();renderRegistry();});
+$('#r-morebtn').addEventListener('click',()=>{showAll=true;renderRegistry();});
+$('#ftoggle').addEventListener('click',()=>{const o=$('#rfilters').classList.toggle('open');$('#ftoggle').setAttribute('aria-expanded',o?'true':'false');});
+function toCSV(rs){const head=['Дата','Заказчик','ИНН заказчика','Предмет','Категория','Способ','Сумма, руб.','Тип суммы','Победитель','Статус','Сигналы','Источник'];const q=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"';
+ return [head].concat(rs.map(r=>[dt(r.d),C[r.c].full,C[r.c].inn||'',r.s,r.cat,r.p,String(r.r).replace('.',','),KIND[r.k],r.w||'',STATUS[r.st],flagsOf(r).map(f=>FLAGS[f].label).join('; '),r.u])).map(a=>a.map(q).join(';')).join('\n');}
+$('#r-copy').addEventListener('click',()=>{const csv=toCSV(filtered());const fb=()=>{$('#csvbox').hidden=false;const ta=$('#csvtext');ta.value=csv;ta.focus();ta.select();};
+ try{navigator.clipboard.writeText(csv).then(()=>{$('#csvbox').hidden=true;toast('Таблица скопирована — вставьте её в Excel');}).catch(fb);}catch(err){fb();}});
+function goReg(qs){S=Object.assign({},DEF);new URLSearchParams(qs).forEach((v,k)=>{if(k==='min'||k==='max')S[k]=+v;else if(k in S)S[k]=v;});showAll=false;sync();renderRegistry();closeDrawer(true);closeMenu(true);showTab('registry');}
+sync();renderRegistry();
+
+/* ---------- Риски ---------- */
+(function(){const fs=stats(FLAGGED);const th=RECS.filter(FLAGS.threshold.test),br=RECS.filter(FLAGS.brand.test);
+ const K=[['С сигналом риска',String(FLAGGED.length),nf0.format(FLAGGED.length/RECS.length*100)+'% выборки','risk=risk',1],['Сумма под сигналом',money(fs.sum),nf0.format(fs.sum/TOTAL.sum*100)+'% суммы выборки','risk=risk',1],['У порога 3 млн ₽',String(th.length),'в окне 2,9–3,0 млн ₽','flag=threshold',1],['Привязка к марке',String(br.length),'реагенты под конкретный аппарат','flag=brand',1],['Жалоб в ФАС','26 270','I пол. 2026, вся Россия','',0],['Записей в РНП','6 914','83% — расторжение','',0]];
+ $('#riskkpis').innerHTML=K.map(k=>k[3]?`<button type="button" class="kpi${k[4]?' risk':''}" data-reg="${k[3]}"><span class="kl">${k[0]}</span><span class="kv">${k[1]}</span><span class="ks">${esc(k[2])}</span></button>`:`<button type="button" class="kpi" data-fact="${k[0]==='Жалоб в ФАС'?'fas1':'fas5'}"><span class="kl">${k[0]}</span><span class="kv">${k[1]}</span><span class="ks">${esc(k[2])}</span></button>`).join('');})();
+hbars($('#flagbars2'),flagItems().map(i=>Object.assign(i,{hint:FLAGS[i.k].desc})),v=>String(v));
+(function(){const B=20,W=.25e6;const bins=Array(B).fill(0);let over=0;RECS.forEach(r=>{const i=Math.floor(r.r/W);if(i<B)bins[i]++;else over++;});const max=Math.max(...bins);
+ $('#hist').innerHTML=bins.map((c,i)=>{const a=i*W,b=(i+1)*W;const lab=`${nf1.format(a/1e6)}–${nf1.format(b/1e6)} млн ₽: ${c} ${plural(c,'закупка','закупки','закупок')}`;return `<button type="button" class="hbin${i===11?' hot':''}" style="height:${c?Math.max(3,c/max*100):0}%" data-reg="min=${a}&max=${b}" data-tip="${lab}" aria-label="${lab}"></button>`;}).join('');
+ $('#hist-note').textContent=`В окне 2,75–3,0 млн ₽ — ${bins[11]} ${plural(bins[11],'закупка','закупки','закупок')}, больше чем в любом другом шаге до 5 млн ₽. Дороже 5 млн ₽ — ещё ${over}, они не показаны.`;})();
+(function(){const rows=Object.keys(C).map(id=>{const rs=RECS.filter(r=>r.c===id);const cnt={};FK.forEach(k=>cnt[k]=rs.filter(FLAGS[k].test).length);return {id,cnt,any:rs.filter(r=>flagsOf(r).length).length,n:rs.length};}).filter(x=>x.any).sort((a,b)=>b.any-a.any||b.n-a.n);
+ const max=Math.max(...rows.flatMap(x=>FK.map(k=>x.cnt[k])),1);
+ const cell=(c,qs,tipT)=>c?`<td class="hc"><button type="button" class="hcb" style="background:color-mix(in srgb,var(--risk) ${Math.round(14+c/max*41)}%,var(--panel-2))" data-reg="${qs}" data-tip="${esc(tipT)}">${c}</button></td>`:'<td class="hc"><span class="h0">·</span></td>';
+ $('#heat').innerHTML=`<thead><tr><th>Заказчик</th>${FK.map(k=>`<th class="r" data-tip="${esc(FLAGS[k].label)}" style="text-align:center">${esc(FLAGS[k].short)}</th>`).join('')}<th style="text-align:center">Всего</th></tr></thead><tbody>${rows.map(x=>`<tr><th scope="row"><button type="button" data-cust="${x.id}">${esc(C[x.id].short)}</button><small>${proc(x.n)}</small></th>${FK.map(k=>cell(x.cnt[k],`cust=${x.id}&flag=${k}`,`${C[x.id].short} · ${FLAGS[k].label}: ${x.cnt[k]}`)).join('')}<td class="hc"><button type="button" class="hcb tot" data-reg="cust=${x.id}&risk=risk" data-tip="${esc(C[x.id].short)}: ${x.any} из ${x.n} с сигналом">${x.any}/${x.n}</button></td></tr>`).join('')}</tbody><tfoot><tr><td>Итого</td>${FK.map(k=>{const n=RECS.filter(FLAGS[k].test).length;return `<td class="hc"><button type="button" class="hcb tot" data-reg="flag=${k}">${n}</button></td>`;}).join('')}<td class="hc"><button type="button" class="hcb tot" data-reg="risk=risk">${FLAGGED.length}</button></td></tr></tfoot>`;})();
+const CTX=[
+ ['Жалобы в ФАС на закупки','26 270','I пол. 2026, +2,4% г/г','Интерфакс',U1.fas,'Все отрасли и оба закона (44-ФЗ и 223-ФЗ). Рассмотрено 21 653 жалобы.'],
+ ['Обоснованные жалобы','7 373','34% рассмотренных','Право.ру',U1.pravo,'Доля обоснованных снизилась на 7,6% год к году; ФАС связывает это с ростом квалификации заказчиков.'],
+ ['Записи в РНП','6 914','83% — расторжение контракта','Интерфакс',U1.fas,'Реестр недобросовестных поставщиков, I полугодие 2026 года. Главная причина — сорванное исполнение.'],
+ ['Картельные дела','161','НМЦК 198,5 млрд ₽, штрафы 20,3 млрд ₽','ppt.ru',U1.cart,'I полугодие 2026 года, 4 945 закупок. Фармацевтика — в тройке отраслей по числу сговоров.'],
+ ['Картель в медизделиях для Москвы','277 млн ₽','114 закупок, декабрь 2025','Фармвестник',U1.cart277,'Сговор при поставке медизделий и расходных материалов для учреждений здравоохранения Москвы.'],
+ ['Картель ИВЛ и УЗИ','949,2 млн ₽','5 регионов, включая Москву','mail.ru',U1.cart949,'Сентябрь 2025 года.'],
+ ['Нарушения в здравоохранении','28,9 млрд ₽','Счётная палата, 2025','GxP News',U1.sp,'Среди причин — низкая конкуренция и рассинхронизация баз Минздрава с ЕИС.'],
+ ['Несостоявшиеся торги по лекарствам','22%','по стоимости, янв–авг 2026','Фармвестник',U1.fail,'В 2025 году — 27%. По числу процедур — 36% против 39%.'],
+ ['Случаи дефицита лекарств','902','313 МНН, 2020–2025','GxP News',U1.def,'Чаще всего — антибиотики и онкопрепараты; в начале 2026 года не хватало платиносодержащих препаратов.'],
+ ['«Заточка» описания под производителя','—','главный предмет споров о медизделиях','BRACE',U1.brace,'Обзор практики ФАС и судов по закупкам медизделий, июль 2026 года.']];
+$('#ctx').innerHTML=CTX.map((c,i)=>`<tr class="clk" data-expand="ctx${i}" tabindex="0"><td><span class="caret">▸</span>${esc(c[0])}</td><td class="amt">${c[1]}</td><td class="hide-sm muted">${esc(c[2])}</td><td class="hide-sm"><a href="${c[4]}" target="_blank" rel="noopener">${esc(c[3])} ↗</a></td></tr><tr class="xrow" id="ctx${i}" hidden><td colspan="4"><p>${esc(c[2])}. ${esc(c[5])}</p><p><a href="${c[4]}" target="_blank" rel="noopener">${esc(c[3])} ↗</a></p></td></tr>`).join('');
+
+/* ---------- Статистика ---------- */
+const fF=k=>`data-fact="${k}"`;
+hbars($('#fund'),[{l:'Бюджет Москвы на здравоохранение',v:615,attrs:fF('fund1')},{l:'Бюджет МГФОМС (ОМС)',v:529.6,attrs:fF('fund2')},{l:'Строительство, ремонт, оборудование',v:150,attrs:fF('fund3')},{l:'Лекарства для льготников',v:66,attrs:fF('fund4')}],v=>nf1.format(v).replace(',0','')+' млрд ₽');
+(function(){const d=[['2024',442.3,'fact','om24'],['2025',null,'none','om25'],['2026',529.6,'plan','om26'],['2027',595,'plan','om27'],['2028',636.3,'plan','om28']];
+ $('#oms').innerHTML=d.map(x=>x[1]==null?`<button type="button" class="col" data-fact="${x[3]}" data-tip="2025: расходы не найдены"><span class="cv muted">н/д</span><span class="cb none" style="height:30%"></span></button>`:`<button type="button" class="col" data-fact="${x[3]}" data-tip="${x[0]}: ${nf1.format(x[1])} млрд ₽"><span class="cv">${nf1.format(x[1])}</span><span class="cb${x[2]==='plan'?' plan':''}" style="height:${x[1]/700*100}%"></span></button>`).join('');
+ $('#oms-x').innerHTML=d.map(x=>`<span>${x[0]}</span>`).join('');})();
+hbars($('#vacc'),[{l:'Москва',v:28.54,attrs:fF('vac1')},{l:'Санкт-Петербург',v:.728,attrs:fF('vac2')},{l:'Новосибирская область',v:.579,attrs:fF('vac3')},{l:'Московская область',v:.52,attrs:fF('vac4')}],v=>v.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2}));
+hbars($('#portal'),[{l:'Медтовары · 2025',v:7.4,cls:'neutral',attrs:fF('por1')},{l:'Медтовары · 2026',v:7.7,attrs:fF('por2')},{l:'Медуслуги · 2025',v:1.3,cls:'neutral',attrs:fF('por3')},{l:'Медуслуги · 2026',v:3.4,attrs:fF('por4'),hint:'×2,6 к 2025 году'}],v=>nf1.format(v));
+hbars($('#fas'),[{l:'Жалоб поступило',v:26270,attrs:fF('fas1')},{l:'Рассмотрено',v:21653,attrs:fF('fas2')},{l:'Признаны обоснованными',v:7373,attrs:fF('fas3')},{l:'Выдано предписаний',v:6892,attrs:fF('fas4')},{l:'Записей в РНП',v:6914,cls:'risk',attrs:fF('fas5')}],v=>nf0.format(v));
+const ECON=[['Экономия на закупках, 2025','108,9 млрд ₽',U1.econ],['Экспертиза НМЦК, I пол. 2026','−19,1 млрд ₽',U1.nmck],['Проверено экспертизой','537,4 млрд ₽',U1.nmck],['Котировочные сессии, I пол. 2026','116,1 тыс. (+25%)',U1.kot],['Среднее снижение цены в сессиях','14%',U1.kot],['Участников на контракт в среднем','7',U1.kot],['Доля Москвы в госпитальных поставках лекарств РФ','26%',U1.hw]];
+$('#econ').innerHTML=ECON.map((e,i)=>`<tr class="clk" data-expand="ec${i}" tabindex="0"><td><span class="caret">▸</span>${esc(e[0])}</td><td class="amt">${e[1]}</td></tr><tr class="xrow" id="ec${i}" hidden><td colspan="2"><a href="${e[2]}" target="_blank" rel="noopener">Источник ↗</a></td></tr>`).join('');
+const DELTA=[['Лекарственное обеспечение льготников','≈62 млрд ₽','66+ млрд ₽','+6%','бюджет 2025 → 2026',U1.gxpDrug,'up'],['Бюджет МГФОМС, расходы','442,3 млрд ₽','529,6 млрд ₽','+20%','факт 2024 → план 2026',U1.ifx,'up'],['Вакцины, заказчики Москвы','22,7 млрд ₽','28,54 млрд ₽','за полгода > весь 2025','2025 → I пол. 2026',U1.vac,'up'],['Медтовары на Портале, контрактов','7,4 тыс.','7,7 тыс.','+4%','январь–май',U1.por26,'up'],['Медуслуги на Портале, контрактов','1,3 тыс.','3,4 тыс.','×2,6','январь–май',U1.por26,'up'],['Несостоявшиеся торги по лекарствам, РФ','27%','22%','−5 п.п.','по стоимости, янв–авг',U1.fail,'down'],['Доля топ-10 поставщиков лекарств, РФ','37%','43%','+6 п.п.','январь–апрель',U1.cur,'up'],['Медицинские госзакупки РФ','—','1,2 трлн ₽','+20% г/г','I полугодие 2026',U1.inc,'up']];
+$('#delta').innerHTML=DELTA.map((d,i)=>`<tr class="clk" data-expand="dl${i}" tabindex="0"><td><span class="caret">▸</span>${esc(d[0])}</td><td class="r num muted">${d[1]}</td><td class="amt">${d[2]}</td><td class="r"><span class="pill ${d[6]==='down'?'info':'ok'}">${d[6]==='down'?'↓':'↑'} ${esc(d[3])}</span></td><td class="hide-sm muted">${esc(d[4])}</td></tr><tr class="xrow" id="dl${i}" hidden><td colspan="5">Период: ${esc(d[4])} · <a href="${d[5]}" target="_blank" rel="noopener">Источник ↗</a></td></tr>`).join('');
+
+/* ---------- Тенденции ---------- */
+const TR=[['Медуслуги на портале','×2,6','3,4 тыс. контрактов против 1,3 тыс. за январь–май','Контрактов на медицинские услуги на Портале поставщиков стало 3,4 тыс. против 1,3 тыс. годом ранее; медтовары держатся в тройке категорий-лидеров.',U1.por26,'РГ'],
+ ['Вакцины','28,5 млрд ₽','за полгода больше, чем за весь 2025','По заказчикам Москвы за I полугодие 2026 года законтрактовано больше вакцин, чем за весь 2025 год (22,7 млрд ₽). Лидеры рынка — «Совигрипп» и «Ультрикс Квадри».',U1.vac,'Headway / GxP News'],
+ ['Централизация','ПП № 736/737','нацпроекты — через ФЦПиЛО Минздрава','Закупки по нацпроектам «Продолжительная и активная жизнь» и «Семья» за счёт федеральных трансфертов проводит федеральный центр. Внутри города ту же роль играет Агентство по закупкам ДЗМ.',U1.ppt736,'ppt.ru'],
+ ['Национальный режим','жёстче','стенты в ограничительном перечне, баллы вместо СТ-1','С 01.10.2026 коронарные стенты и баллонные катетеры — в ограничительном перечне; с 01.12.2026 происхождение подтверждают баллы, а не СТ-1; «второй лишний» для СЗЛС — с 01.12.2026.',U1.ppt969,'ppt.ru'],
+ ['Упрощение 44-ФЗ','20 → 30 млн ₽','порог МСП, котировки до 20 млн ₽','Порог закупок у малого бизнеса — 30 млн ₽, запрос котировок — до 20 млн ₽, цену контрактов на лекарства и медизделия с 2027 года можно менять до 30%.',U1.law,'Фармвестник'],
+ ['Офсеты','8 контрактов','по 4 запущено производство','В 2026 году по офсетам поставляют иммуносупрессанты и препараты от диабета, сердечно-сосудистых, неврологических и ревматологических заболеваний.',U1.ofs,'mos.ru'],
+ ['Лекарственное обеспечение','62 → 66 млрд ₽','+6% к 2025','Бюджет на бесплатные и льготные лекарства, медизделия и лечебное питание.',U1.gxpDrug,'GxP News'],
+ ['Высокие технологии','5 000+ операций','20+ хирургических роботов','В 2026 году ожидается более 5 тыс. роботических операций; платформа МосМедИИ анализирует около 1 млн исследований в месяц.',U1.rob,'ComNews'],
+ ['Рынок РФ','+20%','1,2 трлн ₽ за I полугодие','Медицинские госзакупки России за I полугодие 2026 года, лекарства — +30%.',U1.inc,'Inc. Russia']];
+$('#trendrows').innerHTML=TR.map((t,i)=>`<tr class="clk" data-expand="tr${i}" tabindex="0"><td><span class="caret">▸</span><b>${esc(t[0])}</b></td><td><span class="pill ok">${esc(t[1])}</span></td><td class="hide-sm muted">${esc(t[2])}</td></tr><tr class="xrow" id="tr${i}" hidden><td colspan="3"><p>${esc(t[3])}</p><p><a href="${t[4]}" target="_blank" rel="noopener">${esc(t[5])} ↗</a></p></td></tr>`).join('');
+const EV=[['2025-12-29','Картель в закупках медизделий для Москвы','Контроль','277 млн ₽ в 114 закупках медизделий и расходников для учреждений здравоохранения Москвы.',U1.cart277],
+ ['2025-12-30','ПП № 2225: перенос «второго лишнего» для СЗЛС','Регулирование','Запуск правила для стратегически значимых препаратов сдвинут на 30.06.2026.',U1.vl1],
+ ['2026-01-29','Итоги 2025 года: экономия 108,9 млрд ₽','Рынок','Не менее 4 поставщиков на лот в конкурентных процедурах.',U1.econ],
+ ['2026-02-19','УФАС отклонило жалобу на аукцион Боткинской больницы','Контроль','Аукцион 0373200045226000201, лот 130, медизделия.',U1.ufas],
+ ['2026-02-25','Более 20 хирургических роботов в больницах','Рынок','4,6 тыс. роботических операций в год, в 2026 году ожидается более 5 тыс.',U1.rob],
+ ['2026-03-11','Счётная палата: нарушения на 28,9 млрд ₽','Контроль','Итоги проверок здравоохранения за 2025 год.',U1.sp],
+ ['2026-04-30','Москва — 26% госпитальных поставок лекарств','Рынок','I квартал: 279,8 млрд ₽ по России, +13,1%.',U1.hw],
+ ['2026-06-12','ПП № 736 и № 737: централизация по нацпроектам','Регулирование','Поставщиков по двум нацпроектам выбирает ФЦПиЛО Минздрава.',U1.ppt736],
+ ['2026-06-23','Медтовары — в тройке лидеров Портала','Рынок','7,7 тыс. контрактов на медтовары и 3,4 тыс. на медуслуги за январь–май.',U1.por26],
+ ['2026-06-29','«Второй лишний» для СЗЛС — на 01.12.2026','Регулирование','Перенос после обращения бизнеса.',U1.vl],
+ ['2026-07-10','Экспертиза НМЦК: −19,1 млрд ₽','Рынок','1 124 заключения по контрактам на 537,4 млрд ₽.',U1.nmck],
+ ['2026-07-21','Вакцины: Москва — 28,54 млрд ₽','Рынок','Закупки вакцин в России выросли втрое; 70% поставок — «Нацимбио».',U1.vac],
+ ['2026-07-23','Принят закон об упрощении 44-ФЗ','Регулирование','Порог МСП 30 млн ₽, котировки до 20 млн ₽, изменение цены до 30%.',U1.law],
+ ['2026-08-03','Москва: 200+ тыс. контрактов, 14% закупок РФ','Рынок','Каждый третий контракт — с поставщиками из регионов. В тот же день — ПП № 969 о баллах локализации.',U1.kom],
+ ['2026-08-05','ФАС: 26 270 жалоб за полугодие','Контроль','+2,4% к 2025 году.',U1.pravo],
+ ['2026-09-25','ПП № 1236: стенты и баллонные катетеры','Регулирование','Ограничительный перечень с 01.10.2026.',U1.ppt1236],
+ ['2026-10-01','Вступили в силу основные нормы закона о 44-ФЗ','Регулирование','Новые пороги и правила.',U1.law],
+ ['2026-12-01','СТ-1 перестаёт подтверждать происхождение','Регулирование','Нужны баллы локализации и партия в «Честном знаке».',U1.ppt969],
+ ['2027-01-01','Изменение цены контрактов до 30%','Регулирование','Для контрактов на лекарства и медизделия.',U1.law]];
+const EVTYPES={'Регулирование':'info','Рынок':'ok','Контроль':'risk'};let evType='all';
+function renderEvents(){$('#evchips').innerHTML=[['all','Все'],['Регулирование','Регулирование'],['Рынок','Рынок'],['Контроль','Контроль']].map(x=>`<button type="button" class="chip${x[0]==='Контроль'?' r':x[0]==='Рынок'?' g':''}" data-evt="${x[0]}" aria-pressed="${evType===x[0]}">${x[1]}</button>`).join('');
+ $('#events').innerHTML=EV.map((e,i)=>[e,i]).filter(([e])=>evType==='all'||e[2]===evType).map(([e,i])=>{const fut=e[0]>'2026-10-15';return `<tr class="clk" data-expand="ev${i}" tabindex="0"><td class="date">${dt(e[0])}</td><td><span class="caret">▸</span>${esc(e[1])}${fut?' <span class="pill mut">ожидается</span>':''}</td><td class="hide-sm"><span class="pill ${EVTYPES[e[2]]}">${e[2]}</span></td></tr><tr class="xrow" id="ev${i}" hidden><td colspan="3"><p>${esc(e[3])}</p><p><a href="${e[4]}" target="_blank" rel="noopener">Источник ↗</a></p></td></tr>`;}).join('');}
+renderEvents();
+hbars($('#supp'),[{l:'Р-Фарм',v:24.3,attrs:fF('sup1'),hint:'18% поставок'},{l:'Ирвин 2',v:22.4,attrs:fF('sup2'),hint:'16%'},{l:'Фармстандарт',v:17.7,attrs:fF('sup3'),hint:'13%'}],v=>nf1.format(v));
+let WIN_ORDER=[];
+(function(){const o={};RECS.filter(r=>r.w).forEach(r=>{(o[r.w]=o[r.w]||{s:0,n:0});o[r.w].s+=r.r;o[r.w].n++;});WIN_ORDER=Object.keys(o).sort((a,b)=>o[b].s-o[a].s);
+ hbars($('#winners'),WIN_ORDER.slice(0,7).map(w=>({l:w,v:o[w].s,attrs:`data-win="${esc(w)}"`,tip:`${w}: ${proc(o[w].n)}; заказчики: ${[...winCust[w]].map(c=>C[c].short).join(', ')}`})),money);})();
+
+/* ---------- Источники ---------- */
+$('#m-n').textContent=RECS.length;$('#m-c').textContent=new Set(RECS.map(r=>r.c)).size;
+$('#srclist').innerHTML=[['Коммерсантъ: Москва — 14% закупок России (03.08.2026)',U1.kom],['АиФ: итоги госзакупок Москвы',U1.aif],['m24.ru: бюджет Москвы на 2026 год',U1.m24],['Интерфакс: бюджет МГФОМС 2026–2028',U1.ifx],['Гарант: исполнение бюджета МГФОМС за 2024 год',U1.gar24],['mos.ru: 150 млрд ₽ на материальную базу',U1.mos150],['GxP News: лекарства 66+ млрд ₽',U1.gxpDrug],['РГ: медтовары на Портале поставщиков',U1.por26],['mail.ru: Портал поставщиков, 2025',U1.por25],['Инвестфьючер: котировочные сессии',U1.kot],['GxP News / Headway: вакцины, I полугодие 2026',U1.vac],['GxP News: рынок вакцин 2025',U1.vac25],['mos.ru: экономия 2025',U1.econ],['m24.ru: экспертиза НМЦК',U1.nmck],['GxP News / Headway: госпитальные поставки',U1.hw],['GxP News / Курсор: госзакупки лекарств',U1.cur],['Inc. Russia: госзаказ за полгода',U1.inc],['Фармвестник: несостоявшиеся торги',U1.fail],['Интерфакс: жалобы в ФАС',U1.fas],['Право.ру: жалобы в ФАС',U1.pravo],['ppt.ru: картели, I полугодие 2026',U1.cart],['Фармвестник: картель на 277 млн ₽',U1.cart277],['mail.ru: картель на 949 млн ₽',U1.cart949],['GxP News: Счётная палата',U1.sp],['GxP News: дефицит лекарств',U1.def],['BRACE: споры о закупках медизделий',U1.brace],['mos.ru: офсеты 2026',U1.ofs],['РГ: фармофсеты Москвы',U1.ofs2],['ppt.ru: ПП № 736',U1.ppt736],['Фармвестник: закон об упрощении 44-ФЗ',U1.law],['GxP News: «второй лишний»',U1.vl],['ppt.ru: ПП № 969',U1.ppt969],['ppt.ru: ПП № 1236',U1.ppt1236],['ComNews: хирургические роботы',U1.rob],['mos.ru: МосМедИИ',U1.ai],['Гарант: приказ ДЗМ о «Гормедтехнике»',U1.gorm],['profas.expert: решение УФАС',U1.ufas],['synapsenet.ru: карточки заказчиков',SYN],['BidsFactory, Saby, Ростендер, Бикотендер — ссылка в каждой закупке','https://bidsfactory.com']].map(s=>`<li><a href="${s[1]}" target="_blank" rel="noopener">${esc(s[0])}</a></li>`).join('');
+
+/* ---------- Карточка-досье ---------- */
+const drawer=$('#drawer'),scrim=$('#scrim'),dBody=$('#d-body'),dFoot=$('#d-foot');
+let lastFocus=null,view=null,dnav=null;
+function custRecs(id){return RECS.filter(r=>r.c===id).sort(byDateDesc).map(r=>r.i);}
+function openDrawer(kicker,title,html,anim){tip.hidden=true;closeMenu(true);if(drawer.hidden)lastFocus=document.activeElement;
+ $('#d-kicker').textContent=kicker;$('#d-title').textContent=title;dBody.innerHTML=html;dBody.scrollTop=0;renderFoot();
+ dBody.classList.remove('slide-l','slide-r');if(anim&&!reduce){void dBody.offsetWidth;dBody.classList.add(anim>0?'slide-l':'slide-r');}
+ if(drawer.hidden){drawer.style.transform='';drawer.hidden=false;scrim.hidden=false;document.body.classList.add('locked');requestAnimationFrame(()=>requestAnimationFrame(()=>drawer.classList.add('open')));drawer.querySelector('.d-close').focus({preventScroll:true});}}
+function closeDrawer(silent){if(drawer.hidden)return;drawer.classList.remove('open');drawer.style.transform='';drawer.style.transition='';drawer.hidden=true;if(!menuOpen){scrim.hidden=true;document.body.classList.remove('locked');}view=null;dnav=null;if(!silent&&lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});}
+function navName(kind,id){if(kind==='cust')return C[id].short;if(kind==='win')return id;if(kind==='fact')return FACTS[id].t;const r=RECS[id];return dt(r.d).slice(0,5)+' · '+money(r.r);}
+function renderFoot(){if(!dnav||dnav.list.length<2){dFoot.hidden=true;dFoot.innerHTML='';return;}
+ const n=dnav.list.length,i=Math.max(0,dnav.list.indexOf(dnav.cur));const pv=navName(dnav.kind,dnav.list[(i-1+n)%n]),nx=navName(dnav.kind,dnav.list[(i+1)%n]);dFoot.hidden=false;
+ dFoot.innerHTML=`<button type="button" class="d-step" data-flip="-1" aria-label="Назад: ${esc(pv)}"><span class="d-arr" aria-hidden="true">‹</span><span class="d-nm">${esc(pv)}</span></button><span class="d-pos"><span><b>${i+1}</b> из ${n}</span><small>${esc(dnav.label)}</small><span class="d-hint">листайте ← →</span></span><button type="button" class="d-step next" data-flip="1" aria-label="Далее: ${esc(nx)}"><span class="d-nm">${esc(nx)}</span><span class="d-arr" aria-hidden="true">›</span></button>`;}
+function flip(dir){if(!dnav||dnav.list.length<2)return;const n=dnav.list.length,i=Math.max(0,dnav.list.indexOf(dnav.cur)),t=dnav.list[(i+dir+n)%n];
+ if(dnav.kind==='cust')openCustomer(t,dnav.list,dnav.label,dir);else if(dnav.kind==='win')openWinner(t,dnav.list,dnav.label,dir);else if(dnav.kind==='fact')openFact(t,dir);else openRecord(t,dnav.list,dnav.label,view&&view.parent,dir);}
+function goBack(){const p=view&&view.parent;if(!p)return;if(p.type==='cust')openCustomer(p.id,p.list,p.label,-1);else openWinner(p.id,p.list,p.label,-1);}
+function recItem(r){return `<button type="button" class="rec" data-rec="${r.i}"><span class="rd">${dt(r.d)}</span><span class="rs">${esc(r.s)}</span><span class="ra">${money(r.r)}</span><span class="rw">${KIND[r.k]} · ${STATUS[r.st]}${r.w?' · '+esc(r.w):''}</span></button>`;}
+function openCustomer(id,list,label,anim){const c=C[id];const rs=RECS.filter(r=>r.c===id).sort(byDateDesc);const st=stats(rs);
+ view={type:'cust',id};dnav={kind:'cust',list:list||ORG_ORDER,cur:id,label:label||'Все заказчики'};
+ const parts=byCat(rs,'sum').filter(p=>p.v>0),tot=parts.reduce((s,p)=>s+p.v,0)||1;const fl={};rs.forEach(r=>flagsOf(r).forEach(f=>fl[f]=(fl[f]||0)+1));
+ let h=`<div class="mini"><div><div class="v">${c.total?money(c.total):'н/д'}</div><div class="l">накопленный объём</div></div><div><div class="v">${st.n?st.n+' · '+money(st.sum):'0'}</div><div class="l">закупки 2026 в выборке</div></div><div><div class="v">${st.n?dt(st.first).slice(0,5)+'–'+dt(st.last).slice(0,5):'—'}</div><div class="l">период публикаций</div></div></div>`;
+ h+=`<p class="d-text">${esc(c.role||'')}${c.note?' '+esc(c.note):''}</p>`;
+ h+=`<dl class="kv"><dt>Наименование</dt><dd>${esc(c.full)}</dd><dt>ИНН</dt><dd class="mono">${c.inn?esc(c.inn):'не найден'}</dd><dt>Группа</dt><dd>${esc(GROUPS[c.g])}</dd>${c.total?`<dt>Контрактов всего</dt><dd>${nf0.format(c.n)} · средний ${money(c.total/c.n)}</dd><dt>Точный объём</dt><dd class="mono">${full(c.total)} · <a href="${SYN}" target="_blank" rel="noopener">synapsenet ↗</a></dd>`:''}${c.bf?`<dt>Извещения 2026</dt><dd>${nf0.format(c.bf)} на BidsFactory</dd>`:''}</dl>`;
+ if(st.n){h+=`<div class="d-sec"><h4>Структура по сумме</h4><div class="dseg-bar">${parts.map(p=>`<span style="flex:${p.v/tot};background:${CATCOL[p.cat]}" data-tip="${esc(p.cat)}: ${money(p.s)}"></span>`).join('')}</div><div class="legend" style="margin-top:8px">${parts.map(p=>`<button type="button" class="lg" data-reg="cust=${id}&cat=${esc(p.cat)}"><i style="background:${CATCOL[p.cat]}"></i><span>${esc(p.cat)}</span><span class="lv">${money(p.s)} · ${nf0.format(p.v/tot*100)}%</span></button>`).join('')}</div></div>`;
+  const fk=Object.keys(fl);if(fk.length)h+=`<div class="d-sec"><h4>Сигналы риска</h4><div class="flagbox">${fk.map(f=>`<div><b>${esc(FLAGS[f].label)} — ${fl[f]}</b>${esc(FLAGS[f].desc)}</div>`).join('')}</div></div>`;
+  h+=`<div class="d-sec"><h4>Закупки 2026 · новые сверху</h4><div class="reclist">${rs.map(recItem).join('')}</div></div><div class="d-actions"><button class="btn primary" type="button" data-reg="cust=${id}">Открыть в реестре →</button></div>`;}
+ else h+=`<p class="d-text muted">Процедур 2026 года в выборке нет.</p>`;
+ openDrawer('Заказчик · '+GROUPS[c.g],c.short,h,anim);}
+function openRecord(i,list,label,parent,anim){const r=RECS[i],c=C[r.c],fl=flagsOf(r);
+ view={type:'rec',id:i,parent:parent||null};dnav={kind:'rec',list:(list&&list.length)?list:[i],cur:i,label:label||c.short};
+ let h=parent?`<div><button class="btn" type="button" data-back>← ${esc(parent.type==='cust'?C[parent.id].short:parent.id)}</button></div>`:'';
+ h+=`<div class="mini"><div><div class="v">${money(r.r)}</div><div class="l">${r.k==='n'?'начальная цена (НМЦК)':'итог по данным зеркала'}</div></div><div><div class="v">${dt(r.d)}</div><div class="l">дата публикации</div></div><div><div class="v">${stPill(r.st)}</div><div class="l">на дату снимка</div></div></div>`;
+ h+=`<dl class="kv"><dt>Предмет</dt><dd>${esc(r.s)}</dd><dt>Точная сумма</dt><dd class="mono">${full(r.r)}</dd><dt>Заказчик</dt><dd><a href="#" data-cust="${r.c}">${esc(c.full)}</a></dd>${c.inn?`<dt>ИНН заказчика</dt><dd class="mono">${esc(c.inn)}</dd>`:''}<dt>Категория</dt><dd><span class="catdot" style="background:${CATCOL[r.cat]}"></span>${esc(r.cat)}</dd><dt>Способ</dt><dd>${esc(r.p)}</dd><dt>Победитель</dt><dd>${r.w?`<a href="#" data-win="${esc(r.w)}">${esc(r.w)}</a>`:(r.st==='a'?'не указан в источнике':'ещё не определён')}</dd><dt>Источник</dt><dd><a href="${r.u}" target="_blank" rel="noopener">${srcName(r.u)} ↗</a></dd></dl>`;
+ h+=fl.length?`<div class="d-sec"><h4>Сигналы риска</h4><div class="flagbox">${fl.map(f=>`<div><b>${esc(FLAGS[f].label)}</b>${esc(FLAGS[f].desc)}</div>`).join('')}</div></div>`:`<div class="d-sec"><h4>Сигналы риска</h4><p class="d-text">Автоматические правила не нашли сигналов.</p></div>`;
+ const same=RECS.filter(x=>x.c===r.c&&x.i!==r.i).sort(byDateDesc).slice(0,4);if(same.length)h+=`<div class="d-sec"><h4>Другие закупки заказчика</h4><div class="reclist">${same.map(recItem).join('')}</div></div>`;
+ openDrawer('Закупка · '+c.short,r.cat+' · '+money(r.r),h,anim);}
+function openWinner(w,list,label,anim){const rs=RECS.filter(r=>r.w===w).sort(byDateDesc),st=stats(rs);view={type:'win',id:w};dnav={kind:'win',list:list||WIN_ORDER,cur:w,label:label||'Победители выборки'};
+ openDrawer('Поставщик',w,`<div class="mini"><div><div class="v">${st.n}</div><div class="l">${plural(st.n,'процедура','процедуры','процедур')} в выборке</div></div><div><div class="v">${money(st.sum)}</div><div class="l">на сумму</div></div><div><div class="v">${winCust[w].size}</div><div class="l">${plural(winCust[w].size,'заказчик','заказчика','заказчиков')}</div></div></div><div class="d-sec"><h4>Выигранные процедуры</h4><div class="reclist">${rs.map(recItem).join('')}</div></div><div class="d-actions"><button class="btn primary" type="button" data-reg="q=${encodeURIComponent(w)}">Открыть в реестре →</button></div>`,anim);}
+function openFact(k,anim){const f=FACTS[k];view={type:'fact',id:k};dnav={kind:'fact',list:factList(f.g),cur:k,label:f.g};
+ openDrawer(f.g,f.t,`<div class="bigv">${esc(f.v)}</div><p class="d-text">${esc(f.d)}</p><p class="src">Источник: <a href="${f.u}" target="_blank" rel="noopener">${esc(f.s)} ↗</a></p>`,anim);}
+function openRecFrom(el,i){
+ if(el.closest('#r-body')){openRecord(i,filtered().map(r=>r.i),'Реестр');return;}
+ if(el.closest('#largest')){openRecord(i,RECS.slice().sort((a,b)=>b.r-a.r).slice(0,7).map(r=>r.i),'Крупнейшие закупки');return;}
+ if(el.closest('#drawer')&&view){
+  if(view.type==='cust'){openRecord(i,custRecs(view.id),C[view.id].short,{type:'cust',id:view.id,list:dnav.list,label:dnav.label},1);return;}
+  if(view.type==='win'){openRecord(i,RECS.filter(r=>r.w===view.id).sort(byDateDesc).map(r=>r.i),view.id,{type:'win',id:view.id,list:dnav.list,label:dnav.label},1);return;}
+  const cid=RECS[i].c;openRecord(i,custRecs(cid),C[cid].short,{type:'cust',id:cid,list:ORG_ORDER,label:'Все заказчики'},1);return;}
+ openRecord(i,[i],'');}
+
+/* ---------- Клики ---------- */
+document.addEventListener('click',e=>{const t=e.target;
+ if(t.closest('[data-close]')){menuOpen?closeMenu():closeDrawer();return;}
+ const fl=t.closest('[data-flip]');if(fl){flip(+fl.dataset.flip);return;}
+ if(t.closest('[data-back]')){goBack();return;}
+ const tb=t.closest('[data-tab]');if(tb){closeDrawer(true);closeMenu(true);showTab(tb.dataset.tab);return;}
+ const rg=t.closest('[data-reg]');if(rg){goReg(rg.dataset.reg);return;}
+ const fc=t.closest('[data-fact]');if(fc){openFact(fc.dataset.fact);return;}
+ const rec=t.closest('[data-rec]');if(rec){openRecFrom(rec,+rec.dataset.rec);return;}
+ const cu=t.closest('[data-cust]');if(cu){e.preventDefault();const id=cu.dataset.cust;const inTop=!!cu.closest('#top5,#top-body,#tmap');openCustomer(id,inTop?RANK_ORDER.slice():ORG_ORDER,inTop?'Топ-15':'Все заказчики');return;}
+ const wn=t.closest('[data-win]');if(wn){e.preventDefault();openWinner(wn.dataset.win,WIN_ORDER,'Победители выборки');return;}
+ const ts=t.closest('[data-tsort]');if(ts){const k=ts.dataset.tsort;tSort=tSort.k===k?{k,d:-tSort.d}:{k,d:(k==='rank'||k==='name')?1:-1};renderTop();return;}
+ const rs=t.closest('[data-rsort]');if(rs){const k=rs.dataset.rsort;S.sort=k==='date'?(S.sort==='date-desc'?'date-asc':'date-desc'):(S.sort==='sum-desc'?'sum-asc':'sum-desc');sync();renderRegistry();return;}
+ const rk=t.closest('[data-risk]');if(rk){S.risk=rk.dataset.risk;showAll=false;renderRegistry();return;}
+ const cl=t.closest('[data-clear]');if(cl){const k=cl.dataset.clear;if(k==='range'){S.min=null;S.max=null;}else S[k]=DEF[k];sync();renderRegistry();return;}
+ const gr=t.closest('[data-group]');if(gr){const g=gr.dataset.group;openGroups.has(g)?openGroups.delete(g):openGroups.add(g);renderGroups();const nb=document.querySelector(`[data-group="${g}"]`);if(nb)nb.focus({preventScroll:true});return;}
+ const ex=t.closest('[data-expand]');if(ex&&!t.closest('a')){const row=document.getElementById(ex.dataset.expand);if(row){row.hidden=!row.hidden;const c=ex.querySelector('.caret');if(c)c.textContent=row.hidden?'▸':'▾';}return;}
+ const ev=t.closest('[data-evt]');if(ev){evType=ev.dataset.evt;renderEvents();return;}
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){if(menuOpen){closeMenu();return;}if(!drawer.hidden){closeDrawer();return;}}
+ if(!drawer.hidden&&(e.key==='ArrowLeft'||e.key==='ArrowRight')&&!e.target.closest('input,select,textarea')){e.preventDefault();flip(e.key==='ArrowRight'?1:-1);return;}
+ if(e.key==='Enter'&&e.target.matches('tr[tabindex]')){e.preventDefault();e.target.click();}
+ if((e.key==='Enter'||e.key===' ')&&e.target.matches('circle[role="button"]')){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
+drawer.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=[...drawer.querySelectorAll('button,a[href],[tabindex="0"]')].filter(x=>x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();}});
+/* Свайпы в карточке: влево-вправо — листать, шапку вниз — закрыть */
+(function(){let sx=0,sy=0,st=0;dBody.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;st=Date.now();},{passive:true});
+ dBody.addEventListener('touchend',e=>{const t=e.changedTouches[0];const dx=t.clientX-sx,dy=t.clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6&&Date.now()-st<800)flip(dx<0?1:-1);},{passive:true});
+ let gy=null,gd=0;const s0=e=>{if(!mqMobile.matches||e.target.closest('.d-close'))return;gy=e.touches[0].clientY;gd=0;drawer.style.transition='none';};const s1=e=>{if(gy==null)return;gd=Math.max(0,e.touches[0].clientY-gy);drawer.style.transform='translateY('+gd+'px)';};const s2=()=>{if(gy==null)return;gy=null;drawer.style.transition='';if(gd>90)closeDrawer();else drawer.style.transform='';};
+ [drawer.querySelector('.d-head'),drawer.querySelector('.d-grab')].forEach(el=>{el.addEventListener('touchstart',s0,{passive:true});el.addEventListener('touchmove',s1,{passive:true});el.addEventListener('touchend',s2);el.addEventListener('touchcancel',s2);});})();
+
+/* Старт */
+const h0=(location.hash||'').slice(1);showTab(TABS.some(t=>t[0]===h0)?h0:'overview',{scroll:false,initial:true});
+})();
+</script>
+
+</body>
+</html>
